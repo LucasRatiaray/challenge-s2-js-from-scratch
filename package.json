@@ -2,7 +2,7 @@
 	"type": "module",
 	"scripts": {
 		"build": "concurrently \"tsc --watch\" \"postcss src/styles.css -o public/styles.css --watch\"",
-		"start": "live-server public",
+		"start": "live-server public --mount=/dist:./dist",
 		"lint": "eslint 'src/**/*.{ts,tsx}' --fix"
 	},
 	"devDependencies": {
