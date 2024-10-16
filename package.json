@@ -2,7 +2,7 @@
 	"type": "module",
 	"scripts": {
 		"build": "concurrently \"tsc --watch\" \"postcss src/styles.css -o public/styles.css --watch\"",
-		"start": "live-server public",
+		"start": "live-server public --mount=/dist:./dist",
 		"lint": "eslint 'src/**/*.{ts,tsx}' --fix"
 	},
 	"devDependencies": {
@@ -22,7 +22,11 @@
 		"typescript": "^5.6.2"
 	},
 	"dependencies": {
+<<<<<<< HEAD
 		"node-modules": "^1.0.1",
+=======
+		"flowbite": "^2.5.2",
+>>>>>>> f44af9535e327ce0e861aad34361190de3ce4cbb
 		"undici": "^6.19.8"
 	},
 	"name": "challenge-s2-js-from-scratch",
