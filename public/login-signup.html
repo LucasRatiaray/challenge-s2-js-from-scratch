@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeorgesHub - Login/Signup</title>
+    <link href="styles.css" rel="stylesheet">
+    <style>
+       .form-container {
+        transition: transform 0.6s ease-in-out;
+        display: flex; 
+        width: 300%;
+        transform: translateX(-33.33%);    
+    }
+    
+        .form-container > div {
+        flex: 1;        
+        width: 33.33%; 
+        min-width: 33.33%; 
+    }
+    
+        .form-container.show-signup {
+        transform: translateX(-66.66%);
+    }
+    
+        .form-container.show-forgot {
+        transform: translateX(0);
+    }
+
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col">
+    <header class="bg-primary text-white p-1">
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center space-x-3 rtl:space-x-reverse">
+            <lord-icon
+                    src="https://cdn.lordicon.com/ulttckpo.json"
+                    trigger="loop"
+                    delay="2000"
+                    colors="primary:#121331,secondary:#e4e4e4,tertiary:#f4ce14,quaternary:#495e57"
+                    class="w-16 h-16">
+            </lord-icon>
+            <span class="self-center text-3xl font-extrabold whitespace-nowrap text-secondary dark:text-white">GeorgesHub</span>
+        </a>
+        </div>
+    </header>
+
+    <main class="flex-grow flex items-center justify-center p-4">
+        <div class="max-w-md w-full mx-4 bg-white rounded-2xl shadow-xl overflow-hidden">
+            <div class="relative h-[600px]">
+                <div class="form-container absolute inset-0 flex w-[200%]">
+                    <div class="w-1/2 p-8 flex flex-col justify-center">
+                        <h2 class="text-3xl font-bold mb-6 text-center text-black">Reset Password</h2>
+                        <p class="text-gray-600 text-center mb-8">
+                            Enter your email address and we'll send you a password reset link.
+                        </p>
+                        <form id="resetForm" class="space-y-4">
+                            <div class="mb-4">
+                                <label class="block text-sm font-medium text-gray-700">Email</label>
+                                <input 
+                                    type="email" 
+                                    name="email" 
+                                    required
+                                    class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring focus:ring-blue-200"
+                                >
+                            </div>
+                            <button 
+                                type="submit"
+                                class="w-full bg-primary text-white py-2 px-4 rounded-md hover:bg-secondary hover:text-black"
+                            >
+                                Reset Password
+                            </button>
+                        </form>
+                        <p class="mt-4 text-center text-sm text-gray-600">
+                            Remember your password? 
+                            <a href="#" id="showLoginFromReset" class="font-medium text-primary hover:text-secondary">
+                                Login
+                            </a>
+                        </p>
+                    </div>
+                    <div class="w-1/2 p-8 flex flex-col justify-center">
+                        <h2 class="text-3xl font-bold mb-6 text-center text-gray-800">Welcome back</h2>
+                        <form>
+                            <div class="mb-4">
+                                <label for="loginEmail" class="block text-sm font-medium text-gray-700">Email</label>
+                                <input type="email" id="loginEmail" class="mt-1 block w-full px-3 py-2 border border-primary rounded-md shadow-sm focus:outline-none focus:ring-secondary focus:border-secondary">
+                            </div>
+                            <div class="mb-6">
+                                <label for="loginPassword" class="block text-sm font-medium text-gray-700">Password</label>
+                                <input type="password" id="loginPassword" class="mt-1 block w-full px-3 py-2 border border-primary rounded-md shadow-sm focus:outline-none focus:ring-secondary focus:border-secondary">
+                            </div>
+                            <div class="flex justify-end mb-2">
+                                <a href="#" id="showForgot" class="text-sm text-primary hover:text-secondary">
+                                    Forgot Password?
+                                </a>
+                            </div>
+                            <button type="submit" class="w-full bg-primary text-white py-2 px-4 rounded-md hover:bg-secondary hover:text-black">Login</button>
+                        </form>
+                        <p class="mt-4 text-sm text-center">
+                            Don't have an account? 
+                            <a href="#" id="showSignup" class="font-medium text-primary hover:text-secondary">Sign up</a>
+                        </p>
+                    </div>
+                    <div class="w-1/2 p-8 flex flex-col justify-center">
+                        <h2 class="text-3xl font-bold mb-6 text-center text-black">Sign Up</h2>
+                        <form>
+                            <div class="mb-4">
+                                <label for="signupUsername" class="block text-sm font-medium text-gray-700">Username</label>
+                                <input type="text" id="signupUsername" class="mt-1 block w-full px-3 py-2 border border-primary rounded-md shadow-sm focus:outline-none
+                                focus:ring-secondary  focus:border-secondary">
+                            </div>
+                            <div class="mb-4">
+                                <label for="signupEmail" class="block text-sm font-medium text-gray-700">Email</label>
+                                <input type="email" id="signupEmail" class="mt-1 block w-full px-3 py-2 border border-primary rounded-md shadow-sm focus:outline-none focus:ring-secondary focus:border-secondary">
+                            </div>
+                            <div class="mb-6">
+                                <label for="signupPassword" class="block text-sm font-medium text-gray-700">Password</label>
+                                <input type="password" id="signupPassword" class="mt-1 block w-full px-3 py-2 border border-primary rounded-md shadow-sm focus:outline-none focus:ring-secondary focus:border-secondary">
+                            </div>
+                            <button type="submit" class="w-full bg-primary text-white py-2 px-4 rounded-md hover:bg-secondary hover:text-black">Sign Up</button>
+                        </form>
+                        <p class="mt-4 text-sm text-center">
+                            Already have an account? 
+                            <a href="#" id="showLogin" class="font-medium text-primary hover:text-secondary">Login</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-primary text-white">
+        <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+            <span class="block text-sm text-center">© 2024 <a href="#" class="hover:underline">GeorgesHub™</a>. All Rights Reserved.</span>
+        </div>
+    </footer>
+
+    
+<script>
+    const formContainer = document.querySelector('.form-container');
+    const showSignupLink = document.getElementById('showSignup');
+    const showLoginLink = document.getElementById('showLogin');
+    const showForgotLink = document.getElementById('showForgot');
+    const showLoginFromResetLink = document.getElementById('showLoginFromReset');
+
+    showSignupLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        formContainer.classList.add('show-signup');
+        formContainer.classList.remove('show-forgot');
+    });
+
+    showLoginLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        formContainer.classList.remove('show-signup');
+        formContainer.classList.remove('show-forgot');
+    });
+
+    showForgotLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        formContainer.classList.remove('show-signup');
+        formContainer.classList.add('show-forgot');
+    });
+
+    showLoginFromResetLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        formContainer.classList.remove('show-signup');
+        formContainer.classList.remove('show-forgot');
+    });
+</script>
+<script type="module" src="../dist/login-signup.js"></script>
+</body>
+</html>
