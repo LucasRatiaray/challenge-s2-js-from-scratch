@@ -6,14 +6,22 @@
     <title>GeorgesHub - Login/Signup</title>
     <link href="styles.css" rel="stylesheet">
 </head>
-<body class="bg-gray-100 min-h-screen flex flex-col">
-
-<div id="nav"></div>
-
-    <main class="flex-grow flex items-center justify-center p-4 min-h-screen">
+<body class="bg-custom-image bg-cover bg-center min-h-screen flex flex-col">
+    <main id="login-main" class="relative flex-grow flex items-center justify-center p-4 min-h-screen">
         <div class="max-w-md w-full mx-4 bg-white rounded-2xl shadow-xl overflow-hidden">
             <div class="relative h-[600px]">
-                <div class="form-container absolute inset-0 flex w-[200%]">
+                <!-- Logo -->
+                <a href="/" class="rounded-tl-2xl rounded-tr-2xl border-t border-l border-r relative z-10 bg-primary w-full flex justify-center py-6 items-center space-x-3 rtl:space-x-reverse">
+                    <lord-icon
+                      src="https://cdn.lordicon.com/ulttckpo.json"
+                      trigger="loop"
+                      delay="2000"
+                      colors="primary:#121331,secondary:#e4e4e4,tertiary:#f4ce14,quaternary:#495e57"
+                      class="w-16 h-16">
+                    </lord-icon>
+                    <span class="self-center text-3xl font-extrabold whitespace-nowrap text-secondary dark:text-white">GeorgesHub</span>
+                </a>
+                <div class="form-container relative z-0 inset-0 flex w-[200%]">
                     <div class="w-1/2 p-8 flex flex-col justify-center">
                         <h2 class="text-3xl font-bold mb-6 text-center text-black">Reset Password</h2>
                         <p class="text-gray-600 text-center mb-8">
@@ -94,10 +102,7 @@
         </div>
     </main>
 
-<div id="footer"></div>
-
 <script type="module" src="../dist/login-signup.js"></script>
-<script src="../node_modules/flowbite/dist/flowbite.js"></script>
 <script src="https://cdn.lordicon.com/lordicon.js"></script>
 
 </body>

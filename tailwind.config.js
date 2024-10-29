@@ -5,7 +5,11 @@ module.exports = {
     "./node_modules/flowbite/**/*.js",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'custom-image': "url('/images/login-bg.png')",
+      },
+    },
     colors: {
       'primary': '#495E57',
       'secondary': '#F4CE14',
