@@ -1933,6 +1933,14 @@ input:checked + .toggle-bg {
   text-decoration-line: underline;
 }
 
+.hover\:decoration-secondary:hover {
+  text-decoration-color: #F4CE14;
+}
+
+.hover\:underline-offset-8:hover {
+  text-underline-offset: 8px;
+}
+
 .focus\:border-blue-500:focus {
   --tw-border-opacity: 1;
   border-color: rgb(63 131 248 / var(--tw-border-opacity));
