@@ -19,6 +19,3 @@ export default async function loadComponent(
     console.error("Error loading component:", error);
   }
 }
-
-loadComponent("./components/nav.html", "nav");
-loadComponent("./components/footer.html", "footer");
