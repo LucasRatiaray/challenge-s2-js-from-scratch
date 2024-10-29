@@ -7,6 +7,7 @@
     <link href="styles.css" rel="stylesheet">
 </head>
 <body class="bg-white">
+<header>
 <nav class="bg-primary border-gray-200 dark:bg-gray-900">
     <div class="max-w-screen-xl flex items-center justify-between mx-auto p-1">
         <!-- Logo -->
@@ -59,7 +60,7 @@
                            class="text-white font-semibold underline underline-offset-8 decoration-secondary dark:text-white hover:text-white dark:hover:text-blue-500">Our Reviews</a>
                     </li>
 
-                    <button onclick="window.location.href='/login-signup.html'" type="button" class="text-primary bg-secondary hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full py-1 px-4 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Sign in</button>
+                    <button onclick="window.location.href='/login-signup.html'" type="button" class="text-primary bg-secondary focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full py-1 px-4 text-center dark:focus:ring-blue-800">Sign in</button>
                 </ul>
             </div>
             <!-- Bouton du menu pour les petits écrans -->
@@ -109,6 +110,7 @@
         </ul>
     </div>
 </nav>
+</header>
 <main class="flex justify-center pt-5 w-full">
     <div class="w-screen">
         <div class="flex flex-col justify-center gap-6">
@@ -652,8 +654,6 @@
     </div>
 </main>
 
-
-
 <footer class="bg-primary dark:bg-gray-900">
     <div class="w-full max-w-screen-xl mx-auto md:py-8">
         <div class="sm:flex sm:items-center sm:justify-between">
@@ -692,8 +692,9 @@
     </div>
 </footer>
 
+<script type="module" src="../dist/index.js"></script>
 <script src="../node_modules/flowbite/dist/flowbite.js"></script>
 <script src="https://cdn.lordicon.com/lordicon.js"></script>
-<script type="module" src="../dist/index.js"></script>
+
 </body>
 </html>
