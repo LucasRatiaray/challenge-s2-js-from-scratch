@@ -1,0 +1,20 @@
+<svg width="50" height="50" viewBox="0 0 430 430" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M105 80H325V350H105V80Z" fill="#e4e4e4"/>
+<path d="M35 80H105V350H35V80Z" fill="#495e57"/>
+<path d="M325 80H395V350H325V80Z" fill="#495e57"/>
+<path d="M35 170H105" stroke="#000000" stroke-width="7" stroke-linecap="round"/>
+<path d="M35 260H105" stroke="#000000" stroke-width="7" stroke-linecap="round"/>
+<path d="M395 170H325" stroke="#000000" stroke-width="7" stroke-linecap="round"/>
+<path d="M395 260H325" stroke="#000000" stroke-width="7" stroke-linecap="round"/>
+<path d="M260 214.5L180 267L180 162L260 214.5Z" fill="#f4ce14"/>
+<path d="M260 214.5L180 267L180 162L260 214.5Z" stroke="#000000" stroke-width="7" stroke-linejoin="round"/>
+<g style="mix-blend-mode:multiply" opacity="0.5">
+<path d="M105 76.5H325V121.5H105V76.5Z" fill="#e4e4e4"/>
+</g>
+<g style="mix-blend-mode:multiply" opacity="0.5">
+<path d="M105 308H325V353H105V308Z" fill="#e4e4e4"/>
+</g>
+<path d="M35 80H395V350H35V80Z" stroke="#000000" stroke-width="7" stroke-linejoin="round"/>
+<path d="M105 80V350" stroke="#000000" stroke-width="7" stroke-linecap="round"/>
+<path d="M325 80V350" stroke="#000000" stroke-width="7" stroke-linecap="round"/>
+</svg>

@@ -1,54 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GeorgesHub - Login/Signup</title>
+    <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
     <link href="styles.css" rel="stylesheet">
-    <style>
-       .form-container {
-        transition: transform 0.6s ease-in-out;
-        display: flex; 
-        width: 300%;
-        transform: translateX(-33.33%);    
-    }
-    
-        .form-container > div {
-        flex: 1;        
-        width: 33.33%; 
-        min-width: 33.33%; 
-    }
-    
-        .form-container.show-signup {
-        transform: translateX(-66.66%);
-    }
-    
-        .form-container.show-forgot {
-        transform: translateX(0);
-    }
-
-    </style>
 </head>
-<body class="bg-gray-100 min-h-screen flex flex-col">
-    <header class="bg-primary text-white p-1">
-        <!-- Logo -->
-        <a href="index.html" class="flex items-center space-x-3 rtl:space-x-reverse">
-            <lord-icon
-                    src="https://cdn.lordicon.com/ulttckpo.json"
-                    trigger="loop"
-                    delay="2000"
-                    colors="primary:#121331,secondary:#e4e4e4,tertiary:#f4ce14,quaternary:#495e57"
-                    class="w-16 h-16">
-            </lord-icon>
-            <span class="self-center text-3xl font-extrabold whitespace-nowrap text-secondary dark:text-white">GeorgesHub</span>
-        </a>
-        </div>
-    </header>
 
-    <main class="flex-grow flex items-center justify-center p-4">
+<body class="bg-custom-image bg-cover bg-center min-h-screen flex flex-col">
+    <main id="login-main" class="relative flex-grow flex items-center justify-center p-4 min-h-screen">
         <div class="max-w-md w-full mx-4 bg-white rounded-2xl shadow-xl overflow-hidden">
             <div class="relative h-[600px]">
-                <div class="form-container absolute inset-0 flex w-[200%]">
+                <!-- Logo -->
+                <a href="/" class="rounded-tl-2xl rounded-tr-2xl border-t-2 border-l-2 border-r-2 relative z-10 bg-primary w-full flex justify-center py-6 items-center space-x-3 rtl:space-x-reverse">
+                    <lord-icon
+                      src="https://cdn.lordicon.com/ulttckpo.json"
+                      trigger="loop"
+                      delay="2000"
+                      colors="primary:#121331,secondary:#e4e4e4,tertiary:#f4ce14,quaternary:#495e57"
+                      class="w-16 h-16">
+                    </lord-icon>
+                    <span class="self-center text-3xl font-extrabold whitespace-nowrap text-secondary dark:text-white">GeorgesHub</span>
+                </a>
+                <div class="form-container relative z-0 inset-0 flex w-[200%]">
                     <div class="w-1/2 p-8 flex flex-col justify-center">
                         <h2 class="text-3xl font-bold mb-6 text-center text-black">Reset Password</h2>
                         <p class="text-gray-600 text-center mb-8">
@@ -129,44 +104,9 @@
         </div>
     </main>
 
-    <footer class="bg-primary text-white">
-        <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
-            <span class="block text-sm text-center">© 2024 <a href="#" class="hover:underline">GeorgesHub™</a>. All Rights Reserved.</span>
-        </div>
-    </footer>
-
-    
-<script>
-    const formContainer = document.querySelector('.form-container');
-    const showSignupLink = document.getElementById('showSignup');
-    const showLoginLink = document.getElementById('showLogin');
-    const showForgotLink = document.getElementById('showForgot');
-    const showLoginFromResetLink = document.getElementById('showLoginFromReset');
-
-    showSignupLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        formContainer.classList.add('show-signup');
-        formContainer.classList.remove('show-forgot');
-    });
-
-    showLoginLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        formContainer.classList.remove('show-signup');
-        formContainer.classList.remove('show-forgot');
-    });
-
-    showForgotLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        formContainer.classList.remove('show-signup');
-        formContainer.classList.add('show-forgot');
-    });
-
-    showLoginFromResetLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        formContainer.classList.remove('show-signup');
-        formContainer.classList.remove('show-forgot');
-    });
-</script>
+<script type="module" src="../dist/app.js"></script>
 <script type="module" src="../dist/login-signup.js"></script>
+<script src="https://cdn.lordicon.com/lordicon.js"></script>
+
 </body>
 </html>

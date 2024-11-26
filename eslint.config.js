@@ -10,7 +10,7 @@ const __dirname = dirname(__filename);
 export default [
   eslintPrettier,
   {
-    files: ["**/*.ts"],
+    files: ["**/*.scripts"],
     languageOptions: {
       parser: parser,
       sourceType: "module",

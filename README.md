@@ -32,7 +32,7 @@ Ce projet est un template frontend construit à partir de zéro en TypeScript, s
 
    ```js
    module.exports = {
-     content: ["./public/**/*.{html,js}", "./src/**/*.{ts,js,css}"],
+     content: ["./public/**/*.{html,js}", "./src/**/*.{scripts,js,css}"],
      theme: {
        extend: {},
      },
