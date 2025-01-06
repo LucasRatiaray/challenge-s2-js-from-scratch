@@ -1,8 +1,8 @@
+/* eslint-disable prettier/prettier */
 import typescript from "@typescript-eslint/eslint-plugin";
 import parser from "@typescript-eslint/parser";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
-import eslintPrettier from "eslint-plugin-prettier/recommended";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -56,8 +56,7 @@ export default [
       yoda: "error",
       "explicit-function-return-type": "off",
       "sort-keys": "off",
-      "no-undef-init": "off"
+      "no-undef-init": "off",
     },
   },
 ];
-
