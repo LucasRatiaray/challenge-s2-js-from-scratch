@@ -1,189 +1,58 @@
-/* eslint-disable prettier/prettier */
+// Fonction pour créer le HTML du header
+// "w-[838px] h-[64px] bg-[#121331] rounded-lg flex items-center justify-between mx-auto px-4"
 export function renderHeader() {
-  const header = document.createElement("header");
-  header.innerHTML = `
-        <nav class="bg-primary border-gray-200 dark:bg-gray-900">
-  <div class="max-w-screen-xl flex items-center justify-between mx-auto p-1">
-    <!-- Logo -->
-    <a
-      href="index.html"
-      class="flex items-center space-x-3 rtl:space-x-reverse"
-    >
-      <lord-icon
-        src="https://cdn.lordicon.com/ulttckpo.json"
-        trigger="loop"
-        delay="2000"
-        colors="primary:#121331,secondary:#e4e4e4,tertiary:#f4ce14,quaternary:#495e57"
-        class="w-16 h-16"
-      >
-      </lord-icon>
-      <span
-        class="self-center text-3xl font-extrabold whitespace-nowrap text-secondary dark:text-white"
-        >GeorgesHub</span
-      >
-    </a>
-    <!-- Barre de recherche -->
-    <div class="flex-1 flex justify-center mx-4">
-      <div class="relative hidden md:block">
-        <div
-          class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
-        >
-          <svg
-            class="w-4 h-4 text-gray-700 dark:text-gray-400"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 20 20"
-          >
-            <path
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-            />
-          </svg>
-          <span class="sr-only">Icône de recherche</span>
-        </div>
-        <input
-          type="text"
-          id="search-navbar"
-          class="block w-64 p-2 pl-10 text-sm text-gray-900 border border-gray-500 rounded-md bg-gray-50 focus:ring-secondary focus:border-secondary dark:bg-gray-700 dark:border-gray-600 placeholder-gray-700 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          placeholder="Rechercher..."
-        />
-      </div>
-    </div>
-    <!-- Liens de navigation -->
-    <div class="flex items-center">
-      <!-- Liens pour les écrans moyens et plus grands -->
-      <div class="hidden xl:block">
-        <ul class="flex space-x-8 items-center">
-          <li>
-            <a
-              href="#"
-              class="text-white font-semibold underline underline-offset-8 decoration-secondary dark:text-white hover:text-white dark:hover:text-blue-500"
-              >Movies</a
-            >
-          </li>
-          <li>
-            <a
-              href="#"
-              class="text-white font-semibold underline underline-offset-8 decoration-secondary dark:text-white hover:text-white dark:hover:text-blue-500"
-              >Series</a
-            >
-          </li>
-          <li>
-            <a
-              href="#"
-              class="text-white font-semibold underline underline-offset-8 decoration-secondary dark:text-white hover:text-white dark:hover:text-blue-500"
-              >Genres</a
-            >
-          </li>
-          <li>
-            <a
-              href="#"
-              class="text-white font-semibold underline underline-offset-8 decoration-secondary dark:text-white hover:text-white dark:hover:text-blue-500"
-              >Our Reviews</a
-            >
-          </li>
+  const headerHTML = `
+   <header class="w-[838px] h-[64px] bg-[#495e57] rounded-[34px] flex items-center justify-between mx-auto px-4 mt-[30px]">
+    <!-- Icon Accueil -->
+    <div class="flex items-center space-x-2">
+        <!-- Ton premier SVG (icon d'accueil) -->
+        <svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M23.0001 41.3337C33.1256 41.3337 41.3334 33.1258 41.3334 23.0003C41.3334 12.8748 33.1256 4.66699 23.0001 4.66699C12.8746 4.66699 4.66675 12.8748 4.66675 23.0003C4.66675 33.1258 12.8746 41.3337 23.0001 41.3337Z" stroke="#F4CD14" stroke-width="4" stroke-linejoin="round"/>
+<path d="M23 17.5005C23.7293 17.5005 24.4288 17.2108 24.9445 16.695C25.4603 16.1793 25.75 15.4798 25.75 14.7505C25.75 14.0211 25.4603 13.3217 24.9445 12.8059C24.4288 12.2902 23.7293 12.0005 23 12.0005C22.2707 12.0005 21.5712 12.2902 21.0555 12.8059C20.5397 13.3217 20.25 14.0211 20.25 14.7505C20.25 15.4798 20.5397 16.1793 21.0555 16.695C21.5712 17.2108 22.2707 17.5005 23 17.5005ZM23 34.0005C23.7293 34.0005 24.4288 33.7108 24.9445 33.195C25.4603 32.6793 25.75 31.9798 25.75 31.2505C25.75 30.5211 25.4603 29.8217 24.9445 29.3059C24.4288 28.7902 23.7293 28.5005 23 28.5005C22.2707 28.5005 21.5712 28.7902 21.0555 29.3059C20.5397 29.8217 20.25 30.5211 20.25 31.2505C20.25 31.9798 20.5397 32.6793 21.0555 33.195C21.5712 33.7108 22.2707 34.0005 23 34.0005ZM14.75 25.7505C15.4793 25.7505 16.1788 25.4608 16.6945 24.945C17.2103 24.4293 17.5 23.7298 17.5 23.0005C17.5 22.2711 17.2103 21.5717 16.6945 21.0559C16.1788 20.5402 15.4793 20.2505 14.75 20.2505C14.0207 20.2505 13.3212 20.5402 12.8055 21.0559C12.2897 21.5717 12 22.2711 12 23.0005C12 23.7298 12.2897 24.4293 12.8055 24.945C13.3212 25.4608 14.0207 25.7505 14.75 25.7505ZM31.25 25.7505C31.9793 25.7505 32.6788 25.4608 33.1945 24.945C33.7103 24.4293 34 23.7298 34 23.0005C34 22.2711 33.7103 21.5717 33.1945 21.0559C32.6788 20.5402 31.9793 20.2505 31.25 20.2505C30.5207 20.2505 29.8212 20.5402 29.3055 21.0559C28.7897 21.5717 28.5 22.2711 28.5 23.0005C28.5 23.7298 28.7897 24.4293 29.3055 24.945C29.8212 25.4608 30.5207 25.7505 31.25 25.7505Z" stroke="#F4CD14" stroke-width="4" stroke-linejoin="round"/>
+<path d="M23 41.3335H41.3333" stroke="#F4CD14" stroke-width="4" stroke-linecap="round"/>
+</svg>
 
-          <button
-            onclick="window.location.href='/login-signup.html'"
-            type="button"
-            class="text-primary bg-secondary hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full py-1 px-4 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-          >
-            Sign in
-          </button>
-        </ul>
-      </div>
-      <!-- Bouton du menu pour les petits écrans -->
-      <button
-        data-collapse-toggle="navbar-search"
-        type="button"
-        class="inline-flex items-center p-2 ml-1 text-sm text-secondary rounded-lg xl:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-        aria-controls="navbar-search"
-        aria-expanded="false"
-      >
-        <span class="sr-only">Ouvrir le menu principal</span>
-        <svg
-          class="w-5 h-5"
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 17 14"
-        >
-          <path
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M1 1h15M1 7h15M1 13h15"
-          />
-        </svg>
-      </button>
     </div>
-  </div>
-  <!-- Menu mobile -->
-  <div
-    class="items-center justify-between hidden w-full md:hidden"
-    id="navbar-search"
-  >
-    <div class="relative mt-3">
-      <!-- Barre de recherche mobile -->
-      <div
-        class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
-      >
-        <svg
-          class="w-4 h-4 text-gray-500 dark:text-gray-400"
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 20 20"
-        >
-          <path
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-          />
-        </svg>
-      </div>
-      <input
-        type="text"
-        id="search-navbar-mobile"
-        class="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-        placeholder="Rechercher..."
-      />
-    </div>
-    <ul
-      class="flex flex-col p-4 mt-4 space-y-2 font-medium border border-gray-100 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700"
-    >
-      <li>
-        <a
-          href="#"
-          class="text-gray-900 dark:text-white hover:text-blue-700 dark:hover:text-blue-500"
-          >Accueil</a
-        >
-      </li>
-      <li>
-        <a
-          href="#"
-          class="text-gray-900 dark:text-white hover:text-blue-700 dark:hover:text-blue-500"
-          >À propos</a
-        >
-      </li>
-      <li>
-        <a
-          href="#"
-          class="text-gray-900 dark:text-white hover:text-blue-700 dark:hover:text-blue-500"
-          >Services</a
-        >
-      </li>
-    </ul>
-  </div>
-</nav>
 
-    `;
-  document.body.prepend(header); // Insérer le header au début du body
+    <!-- Button Accueil -->
+    <button class="text-white text-lg font-semibold">Accueil</button>
+
+    <!-- Links -->
+    <nav class="flex space-x-6 text-white font-medium">
+        <a href="#" class="hover:text-[#F4CE14]">FILMS</a>
+        <a href="#" class="hover:text-[#F4CE14]">SERIES</a>
+        <a href="#" class="hover:text-[#F4CE14]">GENRES</a>
+        <a href="#" class="hover:text-[#F4CE14]">NOTRE AVIS</a>
+    </nav>
+
+    <!-- Button Connexion -->
+    <button class="flex items-center text-black bg-[#F4CE14] px-4 rounded-[34px]">
+        <span class="mr-2 text-lg font-semibold">CONNEXION</span>
+        <!-- Icon Connexion -->
+        <svg class="mt-[10px] width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M11 18V11H18V9H11V2L4 8L11 14V11H18V9H11Z" fill="#F4CE14"/>
+            <svg class="mt-[5px] width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path " d="M8.3335 15.1109C10.2195 15.1109 12.0282 14.3617 13.3618 13.0281C14.6954 11.6945 15.4446 9.88577 15.4446 7.99978C15.4446 6.1138 14.6954 4.30506 13.3618 2.97147C12.0282 1.63788 10.2195 0.888672 8.3335 0.888672" stroke="black" stroke-width="1.8" stroke-linecap="round"/>
+<path d="M1.22241 7.99967H10.1113M10.1113 7.99967L7.44463 5.33301M10.1113 7.99967L7.44463 10.6663" stroke="black" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+        </svg>
+    </button>
+
+    <!-- Icon à côté du bouton Connexion -->
+    <div class="flex items-center space-x-2">
+  <svg width="41" height="40" viewBox="0 0 41 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0.333374 20C0.333374 8.95431 9.28768 0 20.3334 0C31.3791 0 40.3334 8.95431 40.3334 20C40.3334 31.0457 31.3791 40 20.3334 40C9.28768 40 0.333374 31.0457 0.333374 20Z" fill="#F4CE14"/>
+<path d="M10.3334 20C10.3334 14.477 14.8104 10 20.3334 10C20.7964 10 20.8734 10.693 20.4764 10.933C19.632 11.4428 18.9148 12.138 18.3789 12.966C17.843 13.794 17.5026 14.7332 17.3835 15.7122C17.2643 16.6913 17.3695 17.6846 17.6911 18.617C18.0127 19.5494 18.5422 20.3964 19.2397 21.0938C19.9371 21.7912 20.784 22.3207 21.7164 22.6423C22.6488 22.9639 23.6421 23.0691 24.6212 22.9499C25.6003 22.8308 26.5394 22.4904 27.3674 21.9545C28.1954 21.4186 28.8906 20.7014 29.4004 19.857C29.6404 19.461 30.3334 19.537 30.3334 20C30.3334 21.138 30.1434 22.231 29.7934 23.25H30.3334C30.5323 23.25 30.7231 23.3291 30.8637 23.4697C31.0044 23.6104 31.0834 23.8011 31.0834 24C31.0834 24.199 31.0044 24.3897 30.8637 24.5304C30.7231 24.671 30.5323 24.75 30.3334 24.75H10.3334C10.1345 24.75 9.9437 24.671 9.80304 24.5304C9.66239 24.3897 9.58337 24.199 9.58337 24C9.58337 23.8011 9.66239 23.6104 9.80304 23.4697C9.9437 23.3291 10.1345 23.25 10.3334 23.25H10.8734C10.5149 22.204 10.3325 21.1058 10.3334 20ZM13.3334 26.25C13.1345 26.25 12.9437 26.3291 12.803 26.4697C12.6624 26.6104 12.5834 26.8011 12.5834 27C12.5834 27.199 12.6624 27.3897 12.803 27.5304C12.9437 27.671 13.1345 27.75 13.3334 27.75H27.3334C27.5323 27.75 27.7231 27.671 27.8637 27.5304C28.0044 27.3897 28.0834 27.199 28.0834 27C28.0834 26.8011 28.0044 26.6104 27.8637 26.4697C27.7231 26.3291 27.5323 26.25 27.3334 26.25H13.3334ZM16.3334 29.25C16.1345 29.25 15.9437 29.3291 15.803 29.4697C15.6624 29.6104 15.5834 29.8011 15.5834 30C15.5834 30.199 15.6624 30.3897 15.803 30.5304C15.9437 30.671 16.1345 30.75 16.3334 30.75H24.3334C24.5323 30.75 24.7231 30.671 24.8637 30.5304C25.0044 30.3897 25.0834 30.199 25.0834 30C25.0834 29.8011 25.0044 29.6104 24.8637 29.4697C24.7231 29.3291 24.5323 29.25 24.3334 29.25H16.3334ZM28.2334 10.307C28.198 10.2164 28.1362 10.1386 28.0559 10.0837C27.9756 10.0289 27.8806 9.99951 27.7834 9.99951C27.6861 9.99951 27.5911 10.0289 27.5109 10.0837C27.4306 10.1386 27.3687 10.2164 27.3334 10.307L26.9034 11.402C26.8795 11.4641 26.843 11.5204 26.7961 11.5676C26.7493 11.6148 26.6932 11.6517 26.6314 11.676L25.5404 12.108C25.45 12.144 25.3726 12.2063 25.318 12.2868C25.2634 12.3673 25.2342 12.4623 25.2342 12.5595C25.2342 12.6568 25.2634 12.7518 25.318 12.8323C25.3726 12.9128 25.45 12.9751 25.5404 13.011L26.6314 13.443C26.6931 13.4673 26.7492 13.5041 26.796 13.551C26.8428 13.598 26.8794 13.6542 26.9034 13.716L27.3334 14.81C27.4954 15.22 28.0734 15.22 28.2334 14.81L28.6634 13.715C28.6875 13.6531 28.7242 13.5969 28.7712 13.5499C28.8182 13.5029 28.8745 13.4662 28.9364 13.442L30.0274 13.01C30.1177 12.9741 30.1952 12.9118 30.2498 12.8313C30.3044 12.7508 30.3335 12.6558 30.3335 12.5585C30.3335 12.4613 30.3044 12.3663 30.2498 12.2858C30.1952 12.2053 30.1177 12.143 30.0274 12.107L28.9364 11.675C28.8744 11.6508 28.8181 11.6139 28.7711 11.5668C28.7241 11.5196 28.6874 11.4632 28.6634 11.401L28.2334 10.307Z" fill="black"/>
+<path d="M24.3664 16.1298C24.3311 16.0392 24.2692 15.9614 24.1889 15.9065C24.1086 15.8516 24.0137 15.8223 23.9164 15.8223C23.8192 15.8223 23.7242 15.8516 23.6439 15.9065C23.5636 15.9614 23.5017 16.0392 23.4664 16.1298L23.3094 16.5288C23.2854 16.5906 23.2488 16.6468 23.202 16.6938C23.1552 16.7408 23.0991 16.7776 23.0374 16.8018L22.6394 16.9598C22.5491 16.9958 22.4716 17.0581 22.417 17.1385C22.3624 17.219 22.3333 17.314 22.3333 17.4113C22.3333 17.5085 22.3624 17.6036 22.417 17.6841C22.4716 17.7645 22.5491 17.8268 22.6394 17.8628L23.0374 18.0198C23.1624 18.0698 23.2604 18.1678 23.3094 18.2938L23.4664 18.6928C23.6274 19.1028 24.2054 19.1028 24.3664 18.6928L24.5234 18.2928C24.5474 18.231 24.584 18.1748 24.6308 18.1278C24.6776 18.0808 24.7337 18.044 24.7954 18.0198L25.1934 17.8628C25.2838 17.8268 25.3612 17.7645 25.4158 17.6841C25.4704 17.6036 25.4996 17.5085 25.4996 17.4113C25.4996 17.314 25.4704 17.219 25.4158 17.1385C25.3612 17.0581 25.2838 16.9958 25.1934 16.9598L24.7954 16.8018C24.7337 16.7776 24.6776 16.7408 24.6308 16.6938C24.584 16.6468 24.5474 16.5906 24.5234 16.5288L24.3664 16.1298Z" fill="black"/>
+</svg>
+
+
+  </div>
+</header>
+  `;
+  const body = document.querySelector("body") as HTMLElement; // Assurez-vous de cibler correctement l'élément
+  if (body) {
+    body.insertAdjacentHTML("afterbegin", headerHTML);
+  }
 }

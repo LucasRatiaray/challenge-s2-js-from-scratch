@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profil Utilisateur</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module" src="../dist/userDetail.js" defer></script>
+    <!-- Inclusion du JS généré par TypeScript -->
+  </head>
+  <body class="bg-[#121331] text-[#e4e4e4] font-sans">
+    <!-- Container -->
+    <div class="max-w-7xl mx-auto px-6 py-12">
+      <!-- Header -->
+      <header>
+        <h1 class="text-4xl font-bold text-[#f4ce14]">Profil Utilisateur</h1>
+      </header>
+
+      <!-- User Card -->
+      <section class="p-6 mt-8 text-[#e4e4e4]">
+        <div class="flex items-center bg-[#1f1f2e] p-6 rounded-[20px]">
+          <!-- Avatar -->
+          <img
+            id="user-avatar"
+            class="w-32 h-32 rounded-full object-cover mr-6"
+            src=""
+            alt="User Avatar"
+          />
+
+          <!-- User Info -->
+          <div class="flex-grow">
+            <h2 id="user-name" class="text-2xl font-semibold text-[#f4ce14]">
+              John Doe
+            </h2>
+            <p id="user-email" class="text-[#e4e4e4]">johndoe@example.com</p>
+            <div id="user-social-links" class="mt-4 flex space-x-4">
+              <!-- Dynamically filled by TypeScript -->
+            </div>
+          </div>
+        </div>
+
+        <div class="flex justify-center items-center space-x-4">
+          <div class="mt-8 bg-[#1f1f2e] p-6 rounded-[20px] w-[500px]">
+            <h5>Moives Watched</h5>
+            <p id="show-watched"></p>
+          </div>
+          <div class="mt-8 bg-[#1f1f2e] p-6 rounded-[20px] w-[500px]">
+            <h5>Show Watched</h5>
+            <p id="movies-watched"></p>
+          </div>
+          <div class="mt-8 bg-[#1f1f2e] p-6 rounded-[20px] w-[500px]">
+            <h5>Comments</h5>
+            <p id="comments-posted"></p>
+          </div>
+        </div>
+
+        <!-- Favorite Movies -->
+        <div class="mt-8 bg-[#1f1f2e] p-6 rounded-[20px] w-[500px]">
+          <h3 class="text-2xl font-semibold text-[#f4ce14]">Films favoris</h3>
+          <ul id="user-movies" class="mt-4">
+            <!-- Dynamically filled by TypeScript -->
+          </ul>
+        </div>
+        <div class="mt-8 bg-[#1f1f2e] p-6 rounded-[20px] w-[500px]">
+          <h3 class="text-2xl font-semibold text-[#f4ce14]">Serie favorites</h3>
+          <ul id="user-shows" class="mt-4">
+            <!-- Dynamically filled by TypeScript -->
+          </ul>
+        </div>
+
+        <!-- Button -->
+        <div class="mt-6">
+          <button
+            class="bg-[#f4ce14] text-[#121331] px-6 py-2 rounded-lg transition-colors hover:bg-[#e4e4e4] hover:text-[#121331]"
+          >
+            Modifier le profil
+          </button>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>
