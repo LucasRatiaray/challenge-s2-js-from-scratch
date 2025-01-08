@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modifier le profil</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../dist/editUser.js" type="module" defer></script>
+    <link href="../public/styles.css" rel="stylesheet" />
+  </head>
+  <body class="bg-[#121331] min-h-screen flex items-center justify-center">
+    <div class="bg-[#1f1f2e] shadow-md rounded-[20px] p-6 max-w-md w-full">
+      <h1 class="text-2xl font-bold mb-4 text-center text-[#f4ce14]">
+        Modifier le profil
+      </h1>
+      <form id="edit-user-form">
+        <!-- Affichage de l'avatar -->
+        <div class="mb-4 text-center">
+          <label for="avatar" class="block text-[#e4e4e4] font-semibold mb-2"
+            >Photo de profil</label
+          >
+          <img
+            id="preview-avatar"
+            src="../public/images/default-avatar.jpg"
+            alt="Avatar Preview"
+            class="w-24 h-24 mx-auto rounded-full object-cover border border-[#495e57]"
+          />
+          <input
+            type="file"
+            id="avatar"
+            accept="image/*"
+            class="mt-3 w-full text-sm text-[#e4e4e4] bg-[#121331]"
+          />
+        </div>
+
+        <!-- Nom -->
+        <div class="mb-4">
+          <label for="name" class="block text-[#e4e4e4] font-semibold"
+            >Nom</label
+          >
+          <input
+            type="text"
+            id="name"
+            class="w-full p-2 border border-[#495e57] rounded-lg bg-[#121331] text-[#e4e4e4]"
+            placeholder="Nom"
+            required
+          />
+        </div>
+
+        <!-- Email -->
+        <div class="mb-4">
+          <label for="email" class="block text-[#e4e4e4] font-semibold"
+            >Email</label
+          >
+          <input
+            type="email"
+            id="email"
+            class="w-full p-2 border border-[#495e57] rounded-lg bg-[#121331] text-[#e4e4e4]"
+            placeholder="Email"
+            required
+          />
+        </div>
+
+        <!-- Films favoris -->
+        <div class="mb-4">
+          <label for="favoriteMovies" class="block text-[#e4e4e4] font-semibold"
+            >Films favoris (séparés par des virgules)</label
+          >
+          <input
+            type="text"
+            id="favoriteMovies"
+            class="w-full p-2 border border-[#495e57] rounded-lg bg-[#121331] text-[#e4e4e4]"
+            placeholder="Ex : Movie 1, Movie 2"
+          />
+        </div>
+
+        <!-- Séries favorites -->
+        <div class="mb-4">
+          <label for="favoriteShows" class="block text-gray-700 font-semibold"
+            >Séries favorites (séparées par des virgules)</label
+          >
+          <input
+            type="text"
+            id="favoriteShows"
+            class="w-full p-2 border border-[#495e57] rounded-lg bg-[#121331] text-[#e4e4e4]"
+            placeholder="Ex : Show 1, Show 2"
+          />
+        </div>
+
+        <!-- Boutons d'action -->
+        <div class="flex justify-between mt-6">
+          <button
+            type="submit"
+            class="bg-[#f4ce14] text-[#121331] px-4 py-2 rounded-lg hover:bg-[#e4e4e4]"
+          >
+            Enregistrer
+          </button>
+          <button
+            type="button"
+            class="bg-[#888888] text-[#e4e4e4] px-4 py-2 rounded-lg hover:bg-[#6f6f6f]"
+            onclick="window.history.back();"
+          >
+            Annuler
+          </button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
