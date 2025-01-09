@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<!-- FILMS PAGE -->
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Films - GeorgesHub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.lordicon.com/lordicon.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @tailwind base;
+        @tailwind components;
+        @tailwind utilities;
+
+        /* We define these colors to match your theme */
+        :root {
+            --primary: #495e57;
+            --secondary: #f4ce14;
+        }
+    </style>
+</head>
+<body class="bg-[#E5E5E5] min-h-screen flex flex-col">
+<!-- Navigation -->
+<nav class="bg-primary border-gray-200 dark:bg-gray-900">
+    <div class="max-w-screen-xl flex items-center justify-between mx-auto p-1">
+        <!-- Logo -->
+        <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
+            <lord-icon src="https://cdn.lordicon.com/ulttckpo.json" trigger="loop" delay="2000"
+                       colors="primary:#121331,secondary:#e4e4e4,tertiary:#f4ce14,quaternary:#495e57" class="w-16 h-16">
+            </lord-icon>
+            <span class="self-center text-3xl font-extrabold whitespace-nowrap text-secondary dark:text-white">GeorgesHub</span>
+        </a>
+
+        <!-- Search Bar -->
+        <div class="flex-1 flex justify-center mx-4">
+            <div class="relative hidden md:block">
+                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                    <svg class="w-4 h-4 text-gray-700 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                    </svg>
+                </div>
+                <input type="text" id="search-navbar" class="block w-80 p-2 pl-10 text-sm text-gray-900 border border-gray-500 rounded-md bg-gray-50 focus:ring-secondary focus:border-secondary" placeholder="Rechercher...">
+            </div>
+        </div>
+
+        <!-- Navigation Links -->
+        <div class="flex items-center">
+            <div class="hidden xl:block">
+                <ul class="flex space-x-8 items-center">
+                    <li><a href="#" class="text-white font-semibold hover:text-secondary underline underline-offset-8 decoration-secondary">Movies</a></li>
+                    <li><a href="#" class="text-white font-semibold hover:text-secondary hover:underline hover:underline-offset-8 hover:decoration-secondary">Series</a></li>
+                    <li><a href="#" class="text-white font-semibold hover:text-secondary hover:underline hover:underline-offset-8 hover:decoration-secondary">Genres</a></li>
+                    <li><a href="#" class="text-white font-semibold hover:text-secondary hover:underline hover:underline-offset-8 hover:decoration-secondary">Our Reviews</a></li>
+                    <button onclick="window.location.href='/login-signup.html'" type="button" class="border-2 border-secondary text-primary bg-secondary font-medium rounded-full py-1 px-4 text-center hover:bg-primary hover:text-white hover:border-white">Sign in</button>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<main class="flex-grow container mx-auto px-4 py-8">
+    <h1 class="text-2xl font-bold mb-8">Films</h1>
+
+    <div class="flex gap-8">
+        <!-- Filters -->
+        <div class="w-64 space-y-6">
+            <!-- Sort Options -->
+            <div class="bg-white rounded-lg p-4">
+                <h2 class="font-bold mb-4">Trier les résultats</h2>
+                <div class="space-y-2">
+                    <button class="w-full text-left px-3 py-2 hover:bg-gray-100 rounded">Titres de A à Z</button>
+                    <button class="w-full text-left px-3 py-2 hover:bg-gray-100 rounded">Titres de Z à A</button>
+                    <button class="w-full text-left px-3 py-2 hover:bg-gray-100 rounded">Popularité</button>
+                    <button class="w-full text-left px-3 py-2 hover:bg-gray-100 rounded">Tendances</button>
+                </div>
+            </div>
+
+            <!-- Filters -->
+            <div class="bg-white rounded-lg p-4">
+                <h2 class="font-bold mb-4">Filtrer les résultats</h2>
+                <div class="flex flex-wrap gap-2">
+                    <button class="px-3 py-1 bg-gray-100 rounded-full hover:bg-gray-200">Action</button>
+                    <button class="px-3 py-1 bg-gray-100 rounded-full hover:bg-gray-200">Animation</button>
+                    <button class="px-3 py-1 bg-gray-100 rounded-full hover:bg-gray-200">Aventure</button>
+                    <button class="px-3 py-1 bg-gray-100 rounded-full hover:bg-gray-200">Comédie</button>
+                    <button class="px-3 py-1 bg-gray-100 rounded-full hover:bg-gray-200">Crime</button>
+                    <button class="px-3 py-1 bg-gray-100 rounded-full hover:bg-gray-200">Documentaire</button>
+                    <button class="px-3 py-1 bg-gray-100 rounded-full hover:bg-gray-200">Drame</button>
+                    <button class="px-3 py-1 bg-gray-100 rounded-full hover:bg-gray-200">Familial</button>
+                    <button class="px-3 py-1 bg-gray-100 rounded-full hover:bg-gray-200">Fantastique</button>
+                    <button class="px-3 py-1 bg-gray-100 rounded-full hover:bg-gray-200">Guerre</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Movies Grid -->
+        <div class="flex-1">
+            <div class="grid grid-cols-5 gap-6">
+                <!-- Movie cards will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Pagination -->
+    <div class="flex justify-center mt-8 gap-1">
+        <button class="px-3 py-1 bg-[#14213D] text-white rounded">Précédent</button>
+        <button class="px-3 py-1 bg-[#FCA311] text-[#14213D] rounded font-bold">1</button>
+        <button class="px-3 py-1 bg-[#14213D] text-white rounded">2</button>
+        <button class="px-3 py-1 bg-[#14213D] text-white rounded">3</button>
+        <button class="px-3 py-1 bg-[#14213D] text-white rounded">4</button>
+        <button class="px-3 py-1 bg-[#14213D] text-white rounded">5</button>
+        <button class="px-3 py-1 bg-[#14213D] text-white rounded">6</button>
+        <button class="px-3 py-1 bg-[#14213D] text-white rounded">Suivant</button>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer class="bg-primary dark:bg-gray-900">
+    <div class="w-full max-w-screen-xl mx-auto md:py-8">
+        <div class="sm:flex sm:items-center sm:justify-between">
+            <!-- Logo -->
+            <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
+                <lord-icon src="https://cdn.lordicon.com/ulttckpo.json" trigger="loop" delay="2000"
+                           colors="primary:#121331,secondary:#e4e4e4,tertiary:#f4ce14,quaternary:#495e57" class="w-16 h-16">
+                </lord-icon>
+                <span class="self-center text-3xl font-extrabold whitespace-nowrap text-secondary dark:text-white">GeorgesHub</span>
+            </a>
+            <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-white sm:mb-0 dark:text-gray-400 gap-4">
+                <li>
+                    <a href="#" class="text-base rounded-full py-2 px-4 text-primary bg-secondary text-md border-2 border-secondary hover:bg-primary hover:text-white hover:border-white">Contact us</a>
+                </li>
+            </ul>
+        </div>
+        <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+        <span class="block text-sm text-white sm:text-center dark:text-gray-400">© 2024 <a href="" class="hover:underline">GeorgesHub™</a>. All Rights Reserved.</span>
+    </div>
+</footer>
+</body>
+</html>
