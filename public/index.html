@@ -1,398 +1,783 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GeorgesHub - Home Page</title>
     <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
     <link href="styles.css" rel="stylesheet">
+
+    <style>
+        /* Masquer la scrollbar pour les navigateurs Webkit (Chrome, Safari) */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Masquer la scrollbar pour Firefox */
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            /* IE and Edge */
+            scrollbar-width: none;
+            /* Firefox */
+        }
+    </style>
+
 </head>
 
-<body class="bg-white">
-<div id="nav"></div>
+<body class="bg-white leading-none">
+    <div id="nav"></div>
 
-<main class="flex justify-center pt-5 w-full">
-    <div class="w-screen">
-        <div class="flex flex-col justify-center">
-
-            <!-- Carousel -->
-            <div id="default-carousel" class="relative px-12 " data-carousel="slide">
-                <!-- Carousel wrapper -->
-                <div class="relative h-64 overflow-hidden rounded-lg lg:h-96">
-                    <!-- Item 1 -->
-                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                        <img src="/images/img.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-                    </div>
-                    <!-- Item 2 -->
-                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                        <img src="/images/img.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-                    </div>
-                    <!-- Item 3 -->
-                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                        <img src="/images/img.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-                    </div>
-                    <!-- Item 4 -->
-                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                        <img src="/images/img.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-                    </div>
-                    <!-- Item 5 -->
-                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                        <img src="/images/img.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-                    </div>
-                </div>
-                <!-- Slider indicators -->
-                <div class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
-                    <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
-                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
-                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
-                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 4" data-carousel-slide-to="3"></button>
-                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 5" data-carousel-slide-to="4"></button>
-                </div>
-                <!-- Slider controls -->
-                <button type="button" class="absolute top-0 start-12 2xl:start-48 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
-                    <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                        <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
+    <section class="bg-cover bg-center bg-no-repeat flex flex-col w-auto h-[500px]"
+        style="background-image: url('/images/hero-banner.jpg');">
+        <div class="flex flex-col mt-[144px] items-center">
+            <div class="w-[398px] flex flex-col">
+                <h1 class="text-[36px] font-bold text-black">Bienvenue,</h1>
+                <span class="text-[24px] font-semibold text-black">Des millions de films et de séries...</span>
+                <span class="text-[24px] font-semibold text-black">Faites votre choix !</span>
+            </div>
+            <form class="w-[440px] h-[40px] mt-[75px]">
+                <label for="default-search"
+                    class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                <div class="relative">
+                    <input type="search" id="default-search"
+                        class="block w-full pl-4 pr-12 text-sm text-gray-900 border border-gray-300 rounded-full bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="Rechercher..." required />
+                    <div class="absolute inset-y-0 end-0 flex items-center pe-3 pointer-events-none">
+                        <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M9.73275 2.1665C6.69183 2.23584 4.91625 2.52509 3.70291 3.73409C2.64125 4.7925 2.28591 6.27992 2.16675 8.6665M16.2685 2.1665C19.3083 2.23584 21.0839 2.52509 22.2983 3.73409C23.36 4.7925 23.7153 6.27992 23.8334 8.6665M16.2685 23.8332C19.3083 23.7638 21.0839 23.4746 22.2983 22.2656C23.36 21.2072 23.7153 19.7198 23.8334 17.3332M9.73275 23.8332C6.69183 23.7638 4.91625 23.4746 3.70291 22.2656C2.64125 21.2072 2.28591 19.7198 2.16675 17.3332M16.2501 16.2498L18.4167 18.4165M17.3334 12.4582C17.3334 11.1652 16.8198 9.92527 15.9056 9.01103C14.9913 8.09679 13.7513 7.58317 12.4584 7.58317C11.1655 7.58317 9.92551 8.09679 9.01127 9.01103C8.09703 9.92527 7.58341 11.1652 7.58341 12.4582C7.58341 13.7511 8.09703 14.9911 9.01127 15.9053C9.92551 16.8196 11.1655 17.3332 12.4584 17.3332C13.7513 17.3332 14.9913 16.8196 15.9056 15.9053C16.8198 14.9911 17.3334 13.7511 17.3334 12.4582Z"
+                                stroke="black" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
-                        <span class="sr-only">Previous</span>
-                    </span>
-                </button>
-                <button type="button" class="absolute top-0 end-12 2xl:end-48 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
-                    <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                        <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
-                        </svg>
-                        <span class="sr-only">Next</span>
-                    </span>
-                </button>
-            </div>
-
-            <!-- Card Container -->
-            <div class="bg-gray-100 p-6 px-24 mt-6">
-                <div class="flex justify-between items-center mb-4 gap-6">
-                    <h2 class="text-2xl font-semibold text-gray-800 flex justify-center items-center gap-3">
-                        Trending Movies
-                        <a href="#" class="text-yellow-500 font-bold text-xl">
-                            <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 512 512">
-                                <path fill="currentColor" d="M48 399.26C48 335.19 62.44 284 90.91 247c34.38-44.67 88.68-68.77 161.56-71.75V72L464 252L252.47 432V329.35c-44.25 1.19-77.66 7.58-104.27 19.84c-28.75 13.25-49.6 33.05-72.08 58.7L48 440Z"/>
-                            </svg>
-                        </a>
-                    </h2>
-                    <div class="text-md text-gray-500 italic">Movies with most views in the last 3 days</div>
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-                </div>
-            </div>
-
-            <!-- Card -->
-            <div class="bg-gray-100 p-6 px-24">
-                <div class="flex justify-between items-center mb-4 gap-6">
-                    <h2 class="text-2xl font-semibold text-gray-800 flex justify-center items-center gap-3">
-                        Trending Series
-                        <a href="#" class="text-yellow-500 font-bold text-xl">
-                            <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 512 512">
-                                <path fill="currentColor" d="M48 399.26C48 335.19 62.44 284 90.91 247c34.38-44.67 88.68-68.77 161.56-71.75V72L464 252L252.47 432V329.35c-44.25 1.19-77.66 7.58-104.27 19.84c-28.75 13.25-49.6 33.05-72.08 58.7L48 440Z"/>
-                            </svg>
-                        </a>
-                    </h2>
-                    <div class="text-md text-gray-500 italic">Series with most views in the last 3 days</div>
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-                    <!-- Card 1 -->
-                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                        <div class="h-48 md:h-48 lg:h-56 w-full overflow-hidden">
-                            <img class="w-full h-full object-cover" src="https://images.affiches-et-posters.com//albums/3/4571/medium/affiche-film-d-animation-moi-moche-mechant-2384.jpg" alt="Image">
-                        </div>
-                        <div class="p-4">
-                            <h3 class="text-lg font-semibold mb-2">Title</h3>
-                            <div class="flex justify-between items-center gap-0.5">
-                                <div class="flex gap-0 text-yellow-500 hover:text-yellow-500">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
-                                        <path fill="currentColor" d="m14.43 10l-1.47-4.84c-.29-.95-1.63-.95-1.91 0L9.57 10H5.12c-.97 0-1.37 1.25-.58 1.81l3.64 2.6l-1.43 4.61c-.29.93.79 1.68 1.56 1.09l3.69-2.8l3.69 2.81c.77.59 1.85-.16 1.56-1.09l-1.43-4.61l3.64-2.6c.79-.57.39-1.81-.58-1.81h-4.45z"/>
-                                    </svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
-                                        <path fill="currentColor" d="m14.43 10l-1.47-4.84c-.29-.95-1.63-.95-1.91 0L9.57 10H5.12c-.97 0-1.37 1.25-.58 1.81l3.64 2.6l-1.43 4.61c-.29.93.79 1.68 1.56 1.09l3.69-2.8l3.69 2.81c.77.59 1.85-.16 1.56-1.09l-1.43-4.61l3.64-2.6c.79-.57.39-1.81-.58-1.81h-4.45z"/>
-                                    </svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
-                                        <path fill="currentColor" d="m14.43 10l-1.47-4.84c-.29-.95-1.63-.95-1.91 0L9.57 10H5.12c-.97 0-1.37 1.25-.58 1.81l3.64 2.6l-1.43 4.61c-.29.93.79 1.68 1.56 1.09l3.69-2.8l3.69 2.81c.77.59 1.85-.16 1.56-1.09l-1.43-4.61l3.64-2.6c.79-.57.39-1.81-.58-1.81h-4.45z"/>
-                                    </svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
-                                        <path fill="currentColor" d="m14.43 10l-1.47-4.84c-.29-.95-1.63-.95-1.91 0L9.57 10H5.12c-.97 0-1.37 1.25-.58 1.81l3.64 2.6l-1.43 4.61c-.29.93.79 1.68 1.56 1.09l3.69-2.8l3.69 2.81c.77.59 1.85-.16 1.56-1.09l-1.43-4.61l3.64-2.6c.79-.57.39-1.81-.58-1.81h-4.45z"/>
-                                    </svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="text-gray-400 w-6 h-6">
-                                        <path fill="currentColor" d="m14.43 10l-1.47-4.84c-.29-.95-1.63-.95-1.91 0L9.57 10H5.12c-.97 0-1.37 1.25-.58 1.81l3.64 2.6l-1.43 4.61c-.29.93.79 1.68 1.56 1.09l3.69-2.8l3.69 2.81c.77.59 1.85-.16 1.56-1.09l-1.43-4.61l3.64-2.6c.79-.57.39-1.81-.58-1.81h-4.45z"/>
-                                    </svg>
-                                </div>
-                                <button class="text-gray-400 hover:text-red-500">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
-                                        <path fill="currentColor" fill-rule="evenodd" d="M4.536 5.778a5 5 0 0 1 7.07 0q.275.274.708.682q.432-.408.707-.682a5 5 0 0 1 7.125 7.016L13.02 19.92a1 1 0 0 1-1.414 0L4.48 12.795a5 5 0 0 1 .055-7.017z"/>
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Repeat for other cards -->
-                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                        <div class="h-48 md:h-48 lg:h-56 w-full overflow-hidden">
-                            <img class="w-full h-full object-cover" src="https://i.ebayimg.com/00/s/MTYwMFgxMjc5/z/gbsAAOSwsOpmFpdK/$_57.JPG?set_id=8800005007" alt="Image">
-                        </div>
-                        <div class="p-4">
-                            <h3 class="text-lg font-semibold mb-2">Title</h3>
-                            <div class="flex justify-between items-center gap-0.5">
-                                <div class="flex gap-0 text-yellow-500 hover:text-yellow-500">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
-                                        <path fill="currentColor" d="m14.43 10l-1.47-4.84c-.29-.95-1.63-.95-1.91 0L9.57 10H5.12c-.97 0-1.37 1.25-.58 1.81l3.64 2.6l-1.43 4.61c-.29.93.79 1.68 1.56 1.09l3.69-2.8l3.69 2.81c.77.59 1.85-.16 1.56-1.09l-1.43-4.61l3.64-2.6c.79-.57.39-1.81-.58-1.81h-4.45z"/>
-                                    </svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
-                                        <path fill="currentColor" d="m14.43 10l-1.47-4.84c-.29-.95-1.63-.95-1.91 0L9.57 10H5.12c-.97 0-1.37 1.25-.58 1.81l3.64 2.6l-1.43 4.61c-.29.93.79 1.68 1.56 1.09l3.69-2.8l3.69 2.81c.77.59 1.85-.16 1.56-1.09l-1.43-4.61l3.64-2.6c.79-.57.39-1.81-.58-1.81h-4.45z"/>
-                                    </svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
-                                        <path fill="currentColor" d="m14.43 10l-1.47-4.84c-.29-.95-1.63-.95-1.91 0L9.57 10H5.12c-.97 0-1.37 1.25-.58 1.81l3.64 2.6l-1.43 4.61c-.29.93.79 1.68 1.56 1.09l3.69-2.8l3.69 2.81c.77.59 1.85-.16 1.56-1.09l-1.43-4.61l3.64-2.6c.79-.57.39-1.81-.58-1.81h-4.45z"/>
-                                    </svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
-                                        <path fill="currentColor" d="m14.43 10l-1.47-4.84c-.29-.95-1.63-.95-1.91 0L9.57 10H5.12c-.97 0-1.37 1.25-.58 1.81l3.64 2.6l-1.43 4.61c-.29.93.79 1.68 1.56 1.09l3.69-2.8l3.69 2.81c.77.59 1.85-.16 1.56-1.09l-1.43-4.61l3.64-2.6c.79-.57.39-1.81-.58-1.81h-4.45z"/>
-                                    </svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="text-gray-400 w-6 h-6">
-                                        <path fill="currentColor" d="m14.43 10l-1.47-4.84c-.29-.95-1.63-.95-1.91 0L9.57 10H5.12c-.97 0-1.37 1.25-.58 1.81l3.64 2.6l-1.43 4.61c-.29.93.79 1.68 1.56 1.09l3.69-2.8l3.69 2.81c.77.59 1.85-.16 1.56-1.09l-1.43-4.61l3.64-2.6c.79-.57.39-1.81-.58-1.81h-4.45z"/>
-                                    </svg>
-                                </div>
-                                <button class="text-gray-400 hover:text-red-500">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
-                                        <path fill="currentColor" fill-rule="evenodd" d="M4.536 5.778a5 5 0 0 1 7.07 0q.275.274.708.682q.432-.408.707-.682a5 5 0 0 1 7.125 7.016L13.02 19.92a1 1 0 0 1-1.414 0L4.48 12.795a5 5 0 0 1 .055-7.017z"/>
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Repeat for other cards -->
-                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                        <div class="h-48 md:h-48 lg:h-56 w-full overflow-hidden">
-                            <img class="w-full h-full object-cover" src="https://fr.web.img3.acsta.net/img/60/13/6013baf72e4a2adc636344c7a3dda3b8.jpg" alt="Image">
-                        </div>
-                        <div class="p-4">
-                            <h3 class="text-lg font-semibold mb-2">Title</h3>
-                            <div class="flex justify-between items-center gap-0.5">
-                                <div class="flex gap-0 text-yellow-500 hover:text-yellow-500">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
-                                        <path fill="currentColor" d="m14.43 10l-1.47-4.84c-.29-.95-1.63-.95-1.91 0L9.57 10H5.12c-.97 0-1.37 1.25-.58 1.81l3.64 2.6l-1.43 4.61c-.29.93.79 1.68 1.56 1.09l3.69-2.8l3.69 2.81c.77.59 1.85-.16 1.56-1.09l-1.43-4.61l3.64-2.6c.79-.57.39-1.81-.58-1.81h-4.45z"/>
-                                    </svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
-                                        <path fill="currentColor" d="m14.43 10l-1.47-4.84c-.29-.95-1.63-.95-1.91 0L9.57 10H5.12c-.97 0-1.37 1.25-.58 1.81l3.64 2.6l-1.43 4.61c-.29.93.79 1.68 1.56 1.09l3.69-2.8l3.69 2.81c.77.59 1.85-.16 1.56-1.09l-1.43-4.61l3.64-2.6c.79-.57.39-1.81-.58-1.81h-4.45z"/>
-                                    </svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
-                                        <path fill="currentColor" d="m14.43 10l-1.47-4.84c-.29-.95-1.63-.95-1.91 0L9.57 10H5.12c-.97 0-1.37 1.25-.58 1.81l3.64 2.6l-1.43 4.61c-.29.93.79 1.68 1.56 1.09l3.69-2.8l3.69 2.81c.77.59 1.85-.16 1.56-1.09l-1.43-4.61l3.64-2.6c.79-.57.39-1.81-.58-1.81h-4.45z"/>
-                                    </svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
-                                        <path fill="currentColor" d="m14.43 10l-1.47-4.84c-.29-.95-1.63-.95-1.91 0L9.57 10H5.12c-.97 0-1.37 1.25-.58 1.81l3.64 2.6l-1.43 4.61c-.29.93.79 1.68 1.56 1.09l3.69-2.8l3.69 2.81c.77.59 1.85-.16 1.56-1.09l-1.43-4.61l3.64-2.6c.79-.57.39-1.81-.58-1.81h-4.45z"/>
-                                    </svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="text-gray-400 w-6 h-6">
-                                        <path fill="currentColor" d="m14.43 10l-1.47-4.84c-.29-.95-1.63-.95-1.91 0L9.57 10H5.12c-.97 0-1.37 1.25-.58 1.81l3.64 2.6l-1.43 4.61c-.29.93.79 1.68 1.56 1.09l3.69-2.8l3.69 2.81c.77.59 1.85-.16 1.56-1.09l-1.43-4.61l3.64-2.6c.79-.57.39-1.81-.58-1.81h-4.45z"/>
-                                    </svg>
-                                </div>
-                                <button class="text-gray-400 hover:text-red-500">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
-                                        <path fill="currentColor" fill-rule="evenodd" d="M4.536 5.778a5 5 0 0 1 7.07 0q.275.274.708.682q.432-.408.707-.682a5 5 0 0 1 7.125 7.016L13.02 19.92a1 1 0 0 1-1.414 0L4.48 12.795a5 5 0 0 1 .055-7.017z"/>
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Repeat for other cards -->
-                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                        <div class="h-48 md:h-48 lg:h-56 w-full overflow-hidden">
-                            <img class="w-full h-full object-cover" src="https://antreducinema.fr/wp-content/uploads/2024/10/l_amour-ouf.jpg" alt="Image">
-                        </div>
-                        <div class="p-4">
-                            <h3 class="text-lg font-semibold mb-2">Title</h3>
-                            <div class="flex justify-between items-center gap-0.5">
-                                <div class="flex gap-0 text-yellow-500 hover:text-yellow-500">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
-                                        <path fill="currentColor" d="m14.43 10l-1.47-4.84c-.29-.95-1.63-.95-1.91 0L9.57 10H5.12c-.97 0-1.37 1.25-.58 1.81l3.64 2.6l-1.43 4.61c-.29.93.79 1.68 1.56 1.09l3.69-2.8l3.69 2.81c.77.59 1.85-.16 1.56-1.09l-1.43-4.61l3.64-2.6c.79-.57.39-1.81-.58-1.81h-4.45z"/>
-                                    </svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
-                                        <path fill="currentColor" d="m14.43 10l-1.47-4.84c-.29-.95-1.63-.95-1.91 0L9.57 10H5.12c-.97 0-1.37 1.25-.58 1.81l3.64 2.6l-1.43 4.61c-.29.93.79 1.68 1.56 1.09l3.69-2.8l3.69 2.81c.77.59 1.85-.16 1.56-1.09l-1.43-4.61l3.64-2.6c.79-.57.39-1.81-.58-1.81h-4.45z"/>
-                                    </svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
-                                        <path fill="currentColor" d="m14.43 10l-1.47-4.84c-.29-.95-1.63-.95-1.91 0L9.57 10H5.12c-.97 0-1.37 1.25-.58 1.81l3.64 2.6l-1.43 4.61c-.29.93.79 1.68 1.56 1.09l3.69-2.8l3.69 2.81c.77.59 1.85-.16 1.56-1.09l-1.43-4.61l3.64-2.6c.79-.57.39-1.81-.58-1.81h-4.45z"/>
-                                    </svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
-                                        <path fill="currentColor" d="m14.43 10l-1.47-4.84c-.29-.95-1.63-.95-1.91 0L9.57 10H5.12c-.97 0-1.37 1.25-.58 1.81l3.64 2.6l-1.43 4.61c-.29.93.79 1.68 1.56 1.09l3.69-2.8l3.69 2.81c.77.59 1.85-.16 1.56-1.09l-1.43-4.61l3.64-2.6c.79-.57.39-1.81-.58-1.81h-4.45z"/>
-                                    </svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="text-gray-400 w-6 h-6">
-                                        <path fill="currentColor" d="m14.43 10l-1.47-4.84c-.29-.95-1.63-.95-1.91 0L9.57 10H5.12c-.97 0-1.37 1.25-.58 1.81l3.64 2.6l-1.43 4.61c-.29.93.79 1.68 1.56 1.09l3.69-2.8l3.69 2.81c.77.59 1.85-.16 1.56-1.09l-1.43-4.61l3.64-2.6c.79-.57.39-1.81-.58-1.81h-4.45z"/>
-                                    </svg>
-                                </div>
-                                <button class="text-gray-400 hover:text-red-500">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
-                                        <path fill="currentColor" fill-rule="evenodd" d="M4.536 5.778a5 5 0 0 1 7.07 0q.275.274.708.682q.432-.408.707-.682a5 5 0 0 1 7.125 7.016L13.02 19.92a1 1 0 0 1-1.414 0L4.48 12.795a5 5 0 0 1 .055-7.017z"/>
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Repeat for other cards -->
-                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                        <div class="h-48 md:h-48 lg:h-56 w-full overflow-hidden">
-                            <img class="w-full h-full object-cover" src="https://antreducinema.fr/wp-content/uploads/2024/10/l_amour-ouf.jpg" alt="Image">
-                        </div>
-                        <div class="p-4">
-                            <h3 class="text-lg font-semibold mb-2">Title</h3>
-                            <div class="flex justify-between items-center gap-0.5">
-                                <div class="flex gap-0 text-yellow-500 hover:text-yellow-500">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
-                                        <path fill="currentColor" d="m14.43 10l-1.47-4.84c-.29-.95-1.63-.95-1.91 0L9.57 10H5.12c-.97 0-1.37 1.25-.58 1.81l3.64 2.6l-1.43 4.61c-.29.93.79 1.68 1.56 1.09l3.69-2.8l3.69 2.81c.77.59 1.85-.16 1.56-1.09l-1.43-4.61l3.64-2.6c.79-.57.39-1.81-.58-1.81h-4.45z"/>
-                                    </svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
-                                        <path fill="currentColor" d="m14.43 10l-1.47-4.84c-.29-.95-1.63-.95-1.91 0L9.57 10H5.12c-.97 0-1.37 1.25-.58 1.81l3.64 2.6l-1.43 4.61c-.29.93.79 1.68 1.56 1.09l3.69-2.8l3.69 2.81c.77.59 1.85-.16 1.56-1.09l-1.43-4.61l3.64-2.6c.79-.57.39-1.81-.58-1.81h-4.45z"/>
-                                    </svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
-                                        <path fill="currentColor" d="m14.43 10l-1.47-4.84c-.29-.95-1.63-.95-1.91 0L9.57 10H5.12c-.97 0-1.37 1.25-.58 1.81l3.64 2.6l-1.43 4.61c-.29.93.79 1.68 1.56 1.09l3.69-2.8l3.69 2.81c.77.59 1.85-.16 1.56-1.09l-1.43-4.61l3.64-2.6c.79-.57.39-1.81-.58-1.81h-4.45z"/>
-                                    </svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
-                                        <path fill="currentColor" d="m14.43 10l-1.47-4.84c-.29-.95-1.63-.95-1.91 0L9.57 10H5.12c-.97 0-1.37 1.25-.58 1.81l3.64 2.6l-1.43 4.61c-.29.93.79 1.68 1.56 1.09l3.69-2.8l3.69 2.81c.77.59 1.85-.16 1.56-1.09l-1.43-4.61l3.64-2.6c.79-.57.39-1.81-.58-1.81h-4.45z"/>
-                                    </svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="text-gray-400 w-6 h-6">
-                                        <path fill="currentColor" d="m14.43 10l-1.47-4.84c-.29-.95-1.63-.95-1.91 0L9.57 10H5.12c-.97 0-1.37 1.25-.58 1.81l3.64 2.6l-1.43 4.61c-.29.93.79 1.68 1.56 1.09l3.69-2.8l3.69 2.81c.77.59 1.85-.16 1.56-1.09l-1.43-4.61l3.64-2.6c.79-.57.39-1.81-.58-1.81h-4.45z"/>
-                                    </svg>
-                                </div>
-                                <button class="text-gray-400 hover:text-red-500">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
-                                        <path fill="currentColor" fill-rule="evenodd" d="M4.536 5.778a5 5 0 0 1 7.07 0q.275.274.708.682q.432-.408.707-.682a5 5 0 0 1 7.125 7.016L13.02 19.92a1 1 0 0 1-1.414 0L4.48 12.795a5 5 0 0 1 .055-7.017z"/>
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="bg-gray-100 p-6 px-24 pb-12">
-                <div class="flex justify-between items-center mb-4 gap-6">
-                    <h2 class="text-2xl font-semibold text-gray-800 flex justify-center items-center gap-3">
-                        Genres
-                        <a href="#" class="text-yellow-500 font-bold text-xl">
-                            <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 512 512">
-                                <path fill="currentColor" d="M48 399.26C48 335.19 62.44 284 90.91 247c34.38-44.67 88.68-68.77 161.56-71.75V72L464 252L252.47 432V329.35c-44.25 1.19-77.66 7.58-104.27 19.84c-28.75 13.25-49.6 33.05-72.08 58.7L48 440Z"/>
-                            </svg>
-                        </a>
-                    </h2>
-                </div>
-
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 justify-center">
-                    <div class="bg-gray-800 shadow-xl group hover:cursor-pointer rounded-xl relative overflow-hidden">
-                        <figure>
-                            <img
-                              src="https://img.freepik.com/free-photo/view-3d-cinema-theatre-room_23-2150866033.jpg?t=st=1730222456~exp=1730226056~hmac=73ec6c66c035488d546fe56b922ece6a676feed0b2a12243ce07d1c95507aea5&w=996"
-                              alt="genre"
-                              class="w-full h-44 object-cover opacity-30 group-hover:opacity-40"
-                            />
-                        </figure>
-                        <div class="absolute inset-0 flex justify-center items-center">
-                            <h2 class="uppercase font-bold text-xl text-white">genre</h2>
-                        </div>
-                    </div>
-                    <div class="bg-gray-800 shadow-xl group hover:cursor-pointer rounded-xl relative overflow-hidden">
-                        <figure>
-                            <img
-                              src="https://img.freepik.com/free-photo/view-3d-cinema-theatre-room_23-2150866033.jpg?t=st=1730222456~exp=1730226056~hmac=73ec6c66c035488d546fe56b922ece6a676feed0b2a12243ce07d1c95507aea5&w=996"
-                              alt="genre"
-                              class="w-full h-44 object-cover opacity-30 group-hover:opacity-40"
-                            />
-                        </figure>
-                        <div class="absolute inset-0 flex justify-center items-center">
-                            <h2 class="uppercase font-bold text-xl text-white">genre</h2>
-                        </div>
-                    </div>
-                    <div class="bg-gray-800 shadow-xl group hover:cursor-pointer rounded-xl relative overflow-hidden">
-                        <figure>
-                            <img
-                              src="https://img.freepik.com/free-photo/view-3d-cinema-theatre-room_23-2150866033.jpg?t=st=1730222456~exp=1730226056~hmac=73ec6c66c035488d546fe56b922ece6a676feed0b2a12243ce07d1c95507aea5&w=996"
-                              alt="genre"
-                              class="w-full h-44 object-cover opacity-30 group-hover:opacity-40"
-                            />
-                        </figure>
-                        <div class="absolute inset-0 flex justify-center items-center">
-                            <h2 class="uppercase font-bold text-xl text-white">genre</h2>
-                        </div>
-                    </div>
-                    <div class="bg-gray-800 shadow-xl group hover:cursor-pointer rounded-xl relative overflow-hidden">
-                        <figure>
-                            <img
-                              src="https://img.freepik.com/free-photo/view-3d-cinema-theatre-room_23-2150866033.jpg?t=st=1730222456~exp=1730226056~hmac=73ec6c66c035488d546fe56b922ece6a676feed0b2a12243ce07d1c95507aea5&w=996"
-                              alt="genre"
-                              class="w-full h-44 object-cover opacity-30 group-hover:opacity-40"
-                            />
-                        </figure>
-                        <div class="absolute inset-0 flex justify-center items-center">
-                            <h2 class="uppercase font-bold text-xl text-white">genre</h2>
-                        </div>
-                    </div>
-                    <div class="bg-gray-800 shadow-xl group hover:cursor-pointer rounded-xl relative overflow-hidden">
-                        <figure>
-                            <img
-                              src="https://img.freepik.com/free-photo/view-3d-cinema-theatre-room_23-2150866033.jpg?t=st=1730222456~exp=1730226056~hmac=73ec6c66c035488d546fe56b922ece6a676feed0b2a12243ce07d1c95507aea5&w=996"
-                              alt="genre"
-                              class="w-full h-44 object-cover opacity-30 group-hover:opacity-40"
-                            />
-                        </figure>
-                        <div class="absolute inset-0 flex justify-center items-center">
-                            <h2 class="uppercase font-bold text-xl text-white">genre</h2>
-                        </div>
-                    </div>
-                    <div class="bg-gray-800 shadow-xl group hover:cursor-pointer rounded-xl relative overflow-hidden">
-                        <figure>
-                            <img
-                              src="https://img.freepik.com/free-photo/view-3d-cinema-theatre-room_23-2150866033.jpg?t=st=1730222456~exp=1730226056~hmac=73ec6c66c035488d546fe56b922ece6a676feed0b2a12243ce07d1c95507aea5&w=996"
-                              alt="genre"
-                              class="w-full h-44 object-cover opacity-30 group-hover:opacity-40"
-                            />
-                        </figure>
-                        <div class="absolute inset-0 flex justify-center items-center">
-                            <h2 class="uppercase font-bold text-xl text-white">genre</h2>
-                        </div>
-                    </div>
-                    <div class="bg-gray-800 shadow-xl group hover:cursor-pointer rounded-xl relative overflow-hidden">
-                        <figure>
-                            <img
-                              src="https://img.freepik.com/free-photo/view-3d-cinema-theatre-room_23-2150866033.jpg?t=st=1730222456~exp=1730226056~hmac=73ec6c66c035488d546fe56b922ece6a676feed0b2a12243ce07d1c95507aea5&w=996"
-                              alt="genre"
-                              class="w-full h-44 object-cover opacity-30 group-hover:opacity-40"
-                            />
-                        </figure>
-                        <div class="absolute inset-0 flex justify-center items-center">
-                            <h2 class="uppercase font-bold text-xl text-white">genre</h2>
-                        </div>
-                    </div>
-                    <div class="bg-gray-800 shadow-xl group hover:cursor-pointer rounded-xl relative overflow-hidden">
-                        <figure>
-                            <img
-                              src="https://img.freepik.com/free-photo/view-3d-cinema-theatre-room_23-2150866033.jpg?t=st=1730222456~exp=1730226056~hmac=73ec6c66c035488d546fe56b922ece6a676feed0b2a12243ce07d1c95507aea5&w=996"
-                              alt="genre"
-                              class="w-full h-44 object-cover opacity-30 group-hover:opacity-40"
-                            />
-                        </figure>
-                        <div class="absolute inset-0 flex justify-center items-center">
-                            <h2 class="uppercase font-bold text-xl text-white">genre</h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            </form>
         </div>
-    </div>
-</main>
+    </section>
 
-<div id="footer"></div>
+    <section class="mt-[32px] ps-[104px] relative">
+        <!-- En-tête de la section -->
+        <div class="flex gap-[16px] items-center px-[20px]">
+            <h2 class="text-[24px] font-bold text-black">Populaires</h2>
+            <!-- SVG Icon -->
+            <svg width="21" height="6" viewBox="0 0 21 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_475_1945)">
+                    <path d="M15.0161 1H19.0161V5" stroke="black" stroke-width="1.8" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path
+                        d="M1.01611 3.00007C1.90311 1.71607 3.49611 0.96707 5.01611 1.00007C6.53611 0.96707 8.12911 1.71607 9.01611 3.00007C9.90311 4.28407 11.4961 5.03307 13.0161 5.00007C14.5361 5.03307 16.0161 4.00007 17.0161 3.00007L19.0161 1.00007"
+                        stroke="black" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                </g>
+                <defs>
+                    <clipPath id="clip0_475_1945">
+                        <rect width="20" height="6" fill="white" transform="translate(0.0161133)" />
+                    </clipPath>
+                </defs>
+            </svg>
+            <!-- Boutons de navigation -->
+            <a href="#" class="text-[20px] text-black rounded-full px-[32px] py-[4px] bg-[#FCA311]">
+                Films
+            </a>
+            <a href="#" class="text-[20px] text-black rounded-full px-[32px] py-[4px] bg-[#D0D0D0]">
+                Séries
+            </a>
+        </div>
 
-<script type="module" src="../dist/app.js"></script>
-<script type="module" src="../dist/index.js"></script>
-<script type="module" src="../dist/movies-list.js"></script>
-<script src="../node_modules/flowbite/dist/flowbite.js"></script>
-<script src="https://cdn.lordicon.com/lordicon.js"></script>
+        <!-- Conteneur des cartes avec flex-nowrap, overflow-x-auto, et classe pour masquer la scrollbar -->
+        <div class="mt-[32px] flex flex-nowrap gap-[32px] overflow-x-auto hide-scrollbar">
+            <!-- Carte 1 -->
+            <div class="relative w-[182px] flex-shrink-0 h-auto px-[16px]">
+                <div class="relative w-auto">
+                    <img src="/images/img-movie.webp" alt="movie-1" class="rounded-[8px] w-full h-auto object-cover">
+                    <div
+                        class="absolute -bottom-2 -right-2 w-[50px] h-[50px] bg-[#14213D] rounded-full flex items-center justify-center border-4 border-white">
+                        <span class="text-white text-[14px] font-bold">87<span class="text-[8px]">%</span></span>
+                    </div>
+                </div>
+                <div class="w-auto mt-[10px] p-[8px]">
+                    <h3 class="text-[18px] font-bold text-black">Nom du film</h3>
+                    <span class="text-[14px] font-light text-[#777777]">Nov 2021</span>
+                </div>
+            </div>
+
+            <div class="relative w-[182px] flex-shrink-0 h-auto px-[16px]">
+                <div class="relative w-auto">
+                    <img src="/images/img-movie.webp" alt="movie-1" class="rounded-[8px] w-full h-auto object-cover">
+                    <div
+                        class="absolute -bottom-2 -right-2 w-[50px] h-[50px] bg-[#14213D] rounded-full flex items-center justify-center border-4 border-white">
+                        <span class="text-white text-[14px] font-bold">87<span class="text-[8px]">%</span></span>
+                    </div>
+                </div>
+                <div class="w-auto mt-[10px] p-[8px]">
+                    <h3 class="text-[18px] font-bold text-black">Nom du film</h3>
+                    <span class="text-[14px] font-light text-[#777777]">Nov 2021</span>
+                </div>
+            </div>
+
+            <div class="relative w-[182px] flex-shrink-0 h-auto px-[16px]">
+                <div class="relative w-auto">
+                    <img src="/images/img-movie.webp" alt="movie-1" class="rounded-[8px] w-full h-auto object-cover">
+                    <div
+                        class="absolute -bottom-2 -right-2 w-[50px] h-[50px] bg-[#14213D] rounded-full flex items-center justify-center border-4 border-white">
+                        <span class="text-white text-[14px] font-bold">87<span class="text-[8px]">%</span></span>
+                    </div>
+                </div>
+                <div class="w-auto mt-[10px] p-[8px]">
+                    <h3 class="text-[18px] font-bold text-black">Nom du film</h3>
+                    <span class="text-[14px] font-light text-[#777777]">Nov 2021</span>
+                </div>
+            </div>
+
+            <div class="relative w-[182px] flex-shrink-0 h-auto px-[16px]">
+                <div class="relative w-auto">
+                    <img src="/images/img-movie.webp" alt="movie-1" class="rounded-[8px] w-full h-auto object-cover">
+                    <div
+                        class="absolute -bottom-2 -right-2 w-[50px] h-[50px] bg-[#14213D] rounded-full flex items-center justify-center border-4 border-white">
+                        <span class="text-white text-[14px] font-bold">87<span class="text-[8px]">%</span></span>
+                    </div>
+                </div>
+                <div class="w-auto mt-[10px] p-[8px]">
+                    <h3 class="text-[18px] font-bold text-black">Nom du film</h3>
+                    <span class="text-[14px] font-light text-[#777777]">Nov 2021</span>
+                </div>
+            </div>
+
+            <div class="relative w-[182px] flex-shrink-0 h-auto px-[16px]">
+                <div class="relative w-auto">
+                    <img src="/images/img-movie.webp" alt="movie-1" class="rounded-[8px] w-full h-auto object-cover">
+                    <div
+                        class="absolute -bottom-2 -right-2 w-[50px] h-[50px] bg-[#14213D] rounded-full flex items-center justify-center border-4 border-white">
+                        <span class="text-white text-[14px] font-bold">87<span class="text-[8px]">%</span></span>
+                    </div>
+                </div>
+                <div class="w-auto mt-[10px] p-[8px]">
+                    <h3 class="text-[18px] font-bold text-black">Nom du film</h3>
+                    <span class="text-[14px] font-light text-[#777777]">Nov 2021</span>
+                </div>
+            </div>
+
+            <div class="relative w-[182px] flex-shrink-0 h-auto px-[16px]">
+                <div class="relative w-auto">
+                    <img src="/images/img-movie.webp" alt="movie-1" class="rounded-[8px] w-full h-auto object-cover">
+                    <div
+                        class="absolute -bottom-2 -right-2 w-[50px] h-[50px] bg-[#14213D] rounded-full flex items-center justify-center border-4 border-white">
+                        <span class="text-white text-[14px] font-bold">87<span class="text-[8px]">%</span></span>
+                    </div>
+                </div>
+                <div class="w-auto mt-[10px] p-[8px]">
+                    <h3 class="text-[18px] font-bold text-black">Nom du film</h3>
+                    <span class="text-[14px] font-light text-[#777777]">Nov 2021</span>
+                </div>
+            </div>
+
+            <div class="relative w-[182px] flex-shrink-0 h-auto px-[16px]">
+                <div class="relative w-auto">
+                    <img src="/images/img-movie.webp" alt="movie-1" class="rounded-[8px] w-full h-auto object-cover">
+                    <div
+                        class="absolute -bottom-2 -right-2 w-[50px] h-[50px] bg-[#14213D] rounded-full flex items-center justify-center border-4 border-white">
+                        <span class="text-white text-[14px] font-bold">87<span class="text-[8px]">%</span></span>
+                    </div>
+                </div>
+                <div class="w-auto mt-[10px] p-[8px]">
+                    <h3 class="text-[18px] font-bold text-black">Nom du film</h3>
+                    <span class="text-[14px] font-light text-[#777777]">Nov 2021</span>
+                </div>
+            </div>
+
+            <div class="relative w-[182px] flex-shrink-0 h-auto px-[16px]">
+                <div class="relative w-auto">
+                    <img src="/images/img-movie.webp" alt="movie-1" class="rounded-[8px] w-full h-auto object-cover">
+                    <div
+                        class="absolute -bottom-2 -right-2 w-[50px] h-[50px] bg-[#14213D] rounded-full flex items-center justify-center border-4 border-white">
+                        <span class="text-white text-[14px] font-bold">87<span class="text-[8px]">%</span></span>
+                    </div>
+                </div>
+                <div class="w-auto mt-[10px] p-[8px]">
+                    <h3 class="text-[18px] font-bold text-black">Nom du film</h3>
+                    <span class="text-[14px] font-light text-[#777777]">Nov 2021</span>
+                </div>
+            </div>
+
+            <div class="relative w-[182px] flex-shrink-0 h-auto px-[16px]">
+                <div class="relative w-auto">
+                    <img src="/images/img-movie.webp" alt="movie-1" class="rounded-[8px] w-full h-auto object-cover">
+                    <div
+                        class="absolute -bottom-2 -right-2 w-[50px] h-[50px] bg-[#14213D] rounded-full flex items-center justify-center border-4 border-white">
+                        <span class="text-white text-[14px] font-bold">87<span class="text-[8px]">%</span></span>
+                    </div>
+                </div>
+                <div class="w-auto mt-[10px] p-[8px]">
+                    <h3 class="text-[18px] font-bold text-black">Nom du film</h3>
+                    <span class="text-[14px] font-light text-[#777777]">Nov 2021</span>
+                </div>
+            </div>
+
+            <div class="relative w-[182px] flex-shrink-0 h-auto px-[16px]">
+                <div class="relative w-auto">
+                    <img src="/images/img-movie.webp" alt="movie-1" class="rounded-[8px] w-full h-auto object-cover">
+                    <div
+                        class="absolute -bottom-2 -right-2 w-[50px] h-[50px] bg-[#14213D] rounded-full flex items-center justify-center border-4 border-white">
+                        <span class="text-white text-[14px] font-bold">87<span class="text-[8px]">%</span></span>
+                    </div>
+                </div>
+                <div class="w-auto mt-[10px] p-[8px]">
+                    <h3 class="text-[18px] font-bold text-black">Nom du film</h3>
+                    <span class="text-[14px] font-light text-[#777777]">Nov 2021</span>
+                </div>
+            </div>
+
+            <div class="relative w-[182px] flex-shrink-0 h-auto px-[16px]">
+                <div class="relative w-auto">
+                    <img src="/images/img-movie.webp" alt="movie-1" class="rounded-[8px] w-full h-auto object-cover">
+                    <div
+                        class="absolute -bottom-2 -right-2 w-[50px] h-[50px] bg-[#14213D] rounded-full flex items-center justify-center border-4 border-white">
+                        <span class="text-white text-[14px] font-bold">87<span class="text-[8px]">%</span></span>
+                    </div>
+                </div>
+                <div class="w-auto mt-[10px] p-[8px]">
+                    <h3 class="text-[18px] font-bold text-black">Nom du film</h3>
+                    <span class="text-[14px] font-light text-[#777777]">Nov 2021</span>
+                </div>
+            </div>
+
+            <div class="relative w-[182px] flex-shrink-0 h-auto px-[16px]">
+                <div class="relative w-auto">
+                    <img src="/images/img-movie.webp" alt="movie-1" class="rounded-[8px] w-full h-auto object-cover">
+                    <div
+                        class="absolute -bottom-2 -right-2 w-[50px] h-[50px] bg-[#14213D] rounded-full flex items-center justify-center border-4 border-white">
+                        <span class="text-white text-[14px] font-bold">87<span class="text-[8px]">%</span></span>
+                    </div>
+                </div>
+                <div class="w-auto mt-[10px] p-[8px]">
+                    <h3 class="text-[18px] font-bold text-black">Nom du film</h3>
+                    <span class="text-[14px] font-light text-[#777777]">Nov 2021</span>
+                </div>
+            </div>
+
+            <!-- Répétez la structure des cartes ci-dessus pour chaque film -->
+            <!-- ... -->
+        </div>
+    </section>
+
+    <hr class="h-px my-8 bg-gray-200 border-0 mx-[122px]">
+
+    <section class="mt-[32px] ps-[104px] relative">
+        <!-- En-tête de la section -->
+        <div class="flex gap-[16px] items-center px-[20px]">
+            <h2 class="text-[24px] font-bold text-black">Tendances</h2>
+            <!-- SVG Icon -->
+            <svg width="21" height="6" viewBox="0 0 21 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_475_1945)">
+                    <path d="M15.0161 1H19.0161V5" stroke="black" stroke-width="1.8" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path
+                        d="M1.01611 3.00007C1.90311 1.71607 3.49611 0.96707 5.01611 1.00007C6.53611 0.96707 8.12911 1.71607 9.01611 3.00007C9.90311 4.28407 11.4961 5.03307 13.0161 5.00007C14.5361 5.03307 16.0161 4.00007 17.0161 3.00007L19.0161 1.00007"
+                        stroke="black" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                </g>
+                <defs>
+                    <clipPath id="clip0_475_1945">
+                        <rect width="20" height="6" fill="white" transform="translate(0.0161133)" />
+                    </clipPath>
+                </defs>
+            </svg>
+            <!-- Boutons de navigation -->
+            <a href="#" class="text-[20px] text-black rounded-full px-[32px] py-[4px] bg-[#FCA311]">
+                Films
+            </a>
+            <a href="#" class="text-[20px] text-black rounded-full px-[32px] py-[4px] bg-[#D0D0D0]">
+                Séries
+            </a>
+        </div>
+
+        <!-- Conteneur des cartes avec flex-nowrap, overflow-x-auto, et classe pour masquer la scrollbar -->
+        <div class="mt-[32px] flex flex-nowrap gap-[32px] overflow-x-auto hide-scrollbar">
+            <!-- Carte 1 -->
+            <div class="relative w-[182px] flex-shrink-0 h-auto px-[16px]">
+                <div class="relative w-auto">
+                    <img src="/images/img-movie.webp" alt="movie-1" class="rounded-[8px] w-full h-auto object-cover">
+                    <div
+                        class="absolute -bottom-2 -right-2 w-[50px] h-[50px] bg-[#14213D] rounded-full flex items-center justify-center border-4 border-white">
+                        <span class="text-white text-[14px] font-bold">87<span class="text-[8px]">%</span></span>
+                    </div>
+                </div>
+                <div class="w-auto mt-[10px] p-[8px]">
+                    <h3 class="text-[18px] font-bold text-black">Nom du film</h3>
+                    <span class="text-[14px] font-light text-[#777777]">Nov 2021</span>
+                </div>
+            </div>
+
+            <div class="relative w-[182px] flex-shrink-0 h-auto px-[16px]">
+                <div class="relative w-auto">
+                    <img src="/images/img-movie.webp" alt="movie-1" class="rounded-[8px] w-full h-auto object-cover">
+                    <div
+                        class="absolute -bottom-2 -right-2 w-[50px] h-[50px] bg-[#14213D] rounded-full flex items-center justify-center border-4 border-white">
+                        <span class="text-white text-[14px] font-bold">87<span class="text-[8px]">%</span></span>
+                    </div>
+                </div>
+                <div class="w-auto mt-[10px] p-[8px]">
+                    <h3 class="text-[18px] font-bold text-black">Nom du film</h3>
+                    <span class="text-[14px] font-light text-[#777777]">Nov 2021</span>
+                </div>
+            </div>
+
+            <div class="relative w-[182px] flex-shrink-0 h-auto px-[16px]">
+                <div class="relative w-auto">
+                    <img src="/images/img-movie.webp" alt="movie-1" class="rounded-[8px] w-full h-auto object-cover">
+                    <div
+                        class="absolute -bottom-2 -right-2 w-[50px] h-[50px] bg-[#14213D] rounded-full flex items-center justify-center border-4 border-white">
+                        <span class="text-white text-[14px] font-bold">87<span class="text-[8px]">%</span></span>
+                    </div>
+                </div>
+                <div class="w-auto mt-[10px] p-[8px]">
+                    <h3 class="text-[18px] font-bold text-black">Nom du film</h3>
+                    <span class="text-[14px] font-light text-[#777777]">Nov 2021</span>
+                </div>
+            </div>
+
+            <div class="relative w-[182px] flex-shrink-0 h-auto px-[16px]">
+                <div class="relative w-auto">
+                    <img src="/images/img-movie.webp" alt="movie-1" class="rounded-[8px] w-full h-auto object-cover">
+                    <div
+                        class="absolute -bottom-2 -right-2 w-[50px] h-[50px] bg-[#14213D] rounded-full flex items-center justify-center border-4 border-white">
+                        <span class="text-white text-[14px] font-bold">87<span class="text-[8px]">%</span></span>
+                    </div>
+                </div>
+                <div class="w-auto mt-[10px] p-[8px]">
+                    <h3 class="text-[18px] font-bold text-black">Nom du film</h3>
+                    <span class="text-[14px] font-light text-[#777777]">Nov 2021</span>
+                </div>
+            </div>
+
+            <div class="relative w-[182px] flex-shrink-0 h-auto px-[16px]">
+                <div class="relative w-auto">
+                    <img src="/images/img-movie.webp" alt="movie-1" class="rounded-[8px] w-full h-auto object-cover">
+                    <div
+                        class="absolute -bottom-2 -right-2 w-[50px] h-[50px] bg-[#14213D] rounded-full flex items-center justify-center border-4 border-white">
+                        <span class="text-white text-[14px] font-bold">87<span class="text-[8px]">%</span></span>
+                    </div>
+                </div>
+                <div class="w-auto mt-[10px] p-[8px]">
+                    <h3 class="text-[18px] font-bold text-black">Nom du film</h3>
+                    <span class="text-[14px] font-light text-[#777777]">Nov 2021</span>
+                </div>
+            </div>
+
+            <div class="relative w-[182px] flex-shrink-0 h-auto px-[16px]">
+                <div class="relative w-auto">
+                    <img src="/images/img-movie.webp" alt="movie-1" class="rounded-[8px] w-full h-auto object-cover">
+                    <div
+                        class="absolute -bottom-2 -right-2 w-[50px] h-[50px] bg-[#14213D] rounded-full flex items-center justify-center border-4 border-white">
+                        <span class="text-white text-[14px] font-bold">87<span class="text-[8px]">%</span></span>
+                    </div>
+                </div>
+                <div class="w-auto mt-[10px] p-[8px]">
+                    <h3 class="text-[18px] font-bold text-black">Nom du film</h3>
+                    <span class="text-[14px] font-light text-[#777777]">Nov 2021</span>
+                </div>
+            </div>
+
+            <div class="relative w-[182px] flex-shrink-0 h-auto px-[16px]">
+                <div class="relative w-auto">
+                    <img src="/images/img-movie.webp" alt="movie-1" class="rounded-[8px] w-full h-auto object-cover">
+                    <div
+                        class="absolute -bottom-2 -right-2 w-[50px] h-[50px] bg-[#14213D] rounded-full flex items-center justify-center border-4 border-white">
+                        <span class="text-white text-[14px] font-bold">87<span class="text-[8px]">%</span></span>
+                    </div>
+                </div>
+                <div class="w-auto mt-[10px] p-[8px]">
+                    <h3 class="text-[18px] font-bold text-black">Nom du film</h3>
+                    <span class="text-[14px] font-light text-[#777777]">Nov 2021</span>
+                </div>
+            </div>
+
+            <div class="relative w-[182px] flex-shrink-0 h-auto px-[16px]">
+                <div class="relative w-auto">
+                    <img src="/images/img-movie.webp" alt="movie-1" class="rounded-[8px] w-full h-auto object-cover">
+                    <div
+                        class="absolute -bottom-2 -right-2 w-[50px] h-[50px] bg-[#14213D] rounded-full flex items-center justify-center border-4 border-white">
+                        <span class="text-white text-[14px] font-bold">87<span class="text-[8px]">%</span></span>
+                    </div>
+                </div>
+                <div class="w-auto mt-[10px] p-[8px]">
+                    <h3 class="text-[18px] font-bold text-black">Nom du film</h3>
+                    <span class="text-[14px] font-light text-[#777777]">Nov 2021</span>
+                </div>
+            </div>
+
+            <div class="relative w-[182px] flex-shrink-0 h-auto px-[16px]">
+                <div class="relative w-auto">
+                    <img src="/images/img-movie.webp" alt="movie-1" class="rounded-[8px] w-full h-auto object-cover">
+                    <div
+                        class="absolute -bottom-2 -right-2 w-[50px] h-[50px] bg-[#14213D] rounded-full flex items-center justify-center border-4 border-white">
+                        <span class="text-white text-[14px] font-bold">87<span class="text-[8px]">%</span></span>
+                    </div>
+                </div>
+                <div class="w-auto mt-[10px] p-[8px]">
+                    <h3 class="text-[18px] font-bold text-black">Nom du film</h3>
+                    <span class="text-[14px] font-light text-[#777777]">Nov 2021</span>
+                </div>
+            </div>
+
+            <div class="relative w-[182px] flex-shrink-0 h-auto px-[16px]">
+                <div class="relative w-auto">
+                    <img src="/images/img-movie.webp" alt="movie-1" class="rounded-[8px] w-full h-auto object-cover">
+                    <div
+                        class="absolute -bottom-2 -right-2 w-[50px] h-[50px] bg-[#14213D] rounded-full flex items-center justify-center border-4 border-white">
+                        <span class="text-white text-[14px] font-bold">87<span class="text-[8px]">%</span></span>
+                    </div>
+                </div>
+                <div class="w-auto mt-[10px] p-[8px]">
+                    <h3 class="text-[18px] font-bold text-black">Nom du film</h3>
+                    <span class="text-[14px] font-light text-[#777777]">Nov 2021</span>
+                </div>
+            </div>
+
+            <div class="relative w-[182px] flex-shrink-0 h-auto px-[16px]">
+                <div class="relative w-auto">
+                    <img src="/images/img-movie.webp" alt="movie-1" class="rounded-[8px] w-full h-auto object-cover">
+                    <div
+                        class="absolute -bottom-2 -right-2 w-[50px] h-[50px] bg-[#14213D] rounded-full flex items-center justify-center border-4 border-white">
+                        <span class="text-white text-[14px] font-bold">87<span class="text-[8px]">%</span></span>
+                    </div>
+                </div>
+                <div class="w-auto mt-[10px] p-[8px]">
+                    <h3 class="text-[18px] font-bold text-black">Nom du film</h3>
+                    <span class="text-[14px] font-light text-[#777777]">Nov 2021</span>
+                </div>
+            </div>
+
+            <div class="relative w-[182px] flex-shrink-0 h-auto px-[16px]">
+                <div class="relative w-auto">
+                    <img src="/images/img-movie.webp" alt="movie-1" class="rounded-[8px] w-full h-auto object-cover">
+                    <div
+                        class="absolute -bottom-2 -right-2 w-[50px] h-[50px] bg-[#14213D] rounded-full flex items-center justify-center border-4 border-white">
+                        <span class="text-white text-[14px] font-bold">87<span class="text-[8px]">%</span></span>
+                    </div>
+                </div>
+                <div class="w-auto mt-[10px] p-[8px]">
+                    <h3 class="text-[18px] font-bold text-black">Nom du film</h3>
+                    <span class="text-[14px] font-light text-[#777777]">Nov 2021</span>
+                </div>
+            </div>
+
+            <!-- Répétez la structure des cartes ci-dessus pour chaque film -->
+            <!-- ... -->
+        </div>
+    </section>
+
+    <section class="mt-[32px] ps-[104px] relative py-[32px] bg-[#14213D]">
+        <!-- En-tête de la section -->
+        <div class="flex gap-[16px] items-center px-[20px]">
+            <h2 class="text-[24px] font-bold text-white">Bandes annonces</h2>
+            <!-- SVG Icon -->
+            <svg width="21" height="6" viewBox="0 0 21 6" class="text-white" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_475_1945)">
+                    <path d="M15.0161 1H19.0161V5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path
+                        d="M1.01611 3.00007C1.90311 1.71607 3.49611 0.96707 5.01611 1.00007C6.53611 0.96707 8.12911 1.71607 9.01611 3.00007C9.90311 4.28407 11.4961 5.03307 13.0161 5.00007C14.5361 5.03307 16.0161 4.00007 17.0161 3.00007L19.0161 1.00007"
+                        stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                </g>
+                <defs>
+                    <clipPath id="clip0_475_1945">
+                        <rect width="20" height="6" fill="white" transform="translate(0.0161133)" />
+                    </clipPath>
+                </defs>
+            </svg>
+            <!-- Boutons de navigation -->
+            <a href="#" class="text-[20px] text-black rounded-full px-[32px] py-[4px] bg-[#FCA311]">
+                Populaires
+            </a>
+            <a href="#" class="text-[20px] text-black rounded-full px-[32px] py-[4px] bg-[#D0D0D0]">
+                Au cinéma
+            </a>
+        </div>
+
+        <!-- Conteneur des cartes avec flex-nowrap, overflow-x-auto, et classe pour masquer la scrollbar -->
+        <div class="mt-[32px] flex flex-nowrap gap-[32px] overflow-x-auto hide-scrollbar">
+            <!-- Carte 1 -->
+            <div class="relative w-[322px] flex-shrink-0 h-auto px-[16px]">
+                <div class="relative w-auto">
+                    <img src="/images/img-ba.webp" alt="movie-1" class="rounded-[8px] w-full h-auto object-cover">
+                    <div
+                        class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[50px] h-[50px] bg-[#14213D] rounded-full flex items-center justify-center">
+                        <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="28" cy="28" r="28" fill="black" fill-opacity="0.5" />
+                            <path
+                                d="M20 17.3892V39.6108C19.9999 39.8579 20.0663 40.1005 20.1923 40.3137C20.3183 40.5269 20.4994 40.7028 20.7168 40.8234C20.9342 40.944 21.1802 41.0049 21.4292 40.9997C21.6782 40.9945 21.9214 40.9235 22.1335 40.7941L31.2333 35.2387L40.333 29.6833C40.5368 29.559 40.7051 29.385 40.8219 29.1779C40.9387 28.9707 41 28.7373 41 28.5C41 28.2627 40.9387 28.0293 40.8219 27.8221C40.7051 27.615 40.5368 27.441 40.333 27.3167L22.1335 16.2059C21.9214 16.0765 21.6782 16.0055 21.4292 16.0003C21.1802 15.9951 20.9342 16.056 20.7168 16.1766C20.4994 16.2972 20.3183 16.4731 20.1923 16.6863C20.0663 16.8995 19.9999 17.1421 20 17.3892Z"
+                                fill="#EEEEEE" />
+                        </svg>
+
+                    </div>
+                </div>
+                <div class="w-auto mt-[10px] p-[8px] text-center">
+                    <h3 class="text-[18px] font-bold text-white">Nom du film</h3>
+                    <span class="text-[14px] font-light text-white">Nov 2021</span>
+                </div>
+            </div>
+
+            <div class="relative w-[322px] flex-shrink-0 h-auto px-[16px]">
+                <div class="relative w-auto">
+                    <img src="/images/img-ba.webp" alt="movie-1" class="rounded-[8px] w-full h-auto object-cover">
+                    <div
+                        class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[50px] h-[50px] bg-[#14213D] rounded-full flex items-center justify-center">
+                        <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="28" cy="28" r="28" fill="black" fill-opacity="0.5" />
+                            <path
+                                d="M20 17.3892V39.6108C19.9999 39.8579 20.0663 40.1005 20.1923 40.3137C20.3183 40.5269 20.4994 40.7028 20.7168 40.8234C20.9342 40.944 21.1802 41.0049 21.4292 40.9997C21.6782 40.9945 21.9214 40.9235 22.1335 40.7941L31.2333 35.2387L40.333 29.6833C40.5368 29.559 40.7051 29.385 40.8219 29.1779C40.9387 28.9707 41 28.7373 41 28.5C41 28.2627 40.9387 28.0293 40.8219 27.8221C40.7051 27.615 40.5368 27.441 40.333 27.3167L22.1335 16.2059C21.9214 16.0765 21.6782 16.0055 21.4292 16.0003C21.1802 15.9951 20.9342 16.056 20.7168 16.1766C20.4994 16.2972 20.3183 16.4731 20.1923 16.6863C20.0663 16.8995 19.9999 17.1421 20 17.3892Z"
+                                fill="#EEEEEE" />
+                        </svg>
+
+                    </div>
+                </div>
+                <div class="w-auto mt-[10px] p-[8px] text-center">
+                    <h3 class="text-[18px] font-bold text-white">Nom du film</h3>
+                    <span class="text-[14px] font-light text-white">Nov 2021</span>
+                </div>
+            </div>
+
+            <div class="relative w-[322px] flex-shrink-0 h-auto px-[16px]">
+                <div class="relative w-auto">
+                    <img src="/images/img-ba.webp" alt="movie-1" class="rounded-[8px] w-full h-auto object-cover">
+                    <div
+                        class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[50px] h-[50px] bg-[#14213D] rounded-full flex items-center justify-center">
+                        <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="28" cy="28" r="28" fill="black" fill-opacity="0.5" />
+                            <path
+                                d="M20 17.3892V39.6108C19.9999 39.8579 20.0663 40.1005 20.1923 40.3137C20.3183 40.5269 20.4994 40.7028 20.7168 40.8234C20.9342 40.944 21.1802 41.0049 21.4292 40.9997C21.6782 40.9945 21.9214 40.9235 22.1335 40.7941L31.2333 35.2387L40.333 29.6833C40.5368 29.559 40.7051 29.385 40.8219 29.1779C40.9387 28.9707 41 28.7373 41 28.5C41 28.2627 40.9387 28.0293 40.8219 27.8221C40.7051 27.615 40.5368 27.441 40.333 27.3167L22.1335 16.2059C21.9214 16.0765 21.6782 16.0055 21.4292 16.0003C21.1802 15.9951 20.9342 16.056 20.7168 16.1766C20.4994 16.2972 20.3183 16.4731 20.1923 16.6863C20.0663 16.8995 19.9999 17.1421 20 17.3892Z"
+                                fill="#EEEEEE" />
+                        </svg>
+
+                    </div>
+                </div>
+                <div class="w-auto mt-[10px] p-[8px] text-center">
+                    <h3 class="text-[18px] font-bold text-white">Nom du film</h3>
+                    <span class="text-[14px] font-light text-white">Nov 2021</span>
+                </div>
+            </div>
+
+            <div class="relative w-[322px] flex-shrink-0 h-auto px-[16px]">
+                <div class="relative w-auto">
+                    <img src="/images/img-ba.webp" alt="movie-1" class="rounded-[8px] w-full h-auto object-cover">
+                    <div
+                        class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[50px] h-[50px] bg-[#14213D] rounded-full flex items-center justify-center">
+                        <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="28" cy="28" r="28" fill="black" fill-opacity="0.5" />
+                            <path
+                                d="M20 17.3892V39.6108C19.9999 39.8579 20.0663 40.1005 20.1923 40.3137C20.3183 40.5269 20.4994 40.7028 20.7168 40.8234C20.9342 40.944 21.1802 41.0049 21.4292 40.9997C21.6782 40.9945 21.9214 40.9235 22.1335 40.7941L31.2333 35.2387L40.333 29.6833C40.5368 29.559 40.7051 29.385 40.8219 29.1779C40.9387 28.9707 41 28.7373 41 28.5C41 28.2627 40.9387 28.0293 40.8219 27.8221C40.7051 27.615 40.5368 27.441 40.333 27.3167L22.1335 16.2059C21.9214 16.0765 21.6782 16.0055 21.4292 16.0003C21.1802 15.9951 20.9342 16.056 20.7168 16.1766C20.4994 16.2972 20.3183 16.4731 20.1923 16.6863C20.0663 16.8995 19.9999 17.1421 20 17.3892Z"
+                                fill="#EEEEEE" />
+                        </svg>
+
+                    </div>
+                </div>
+                <div class="w-auto mt-[10px] p-[8px] text-center">
+                    <h3 class="text-[18px] font-bold text-white">Nom du film</h3>
+                    <span class="text-[14px] font-light text-white">Nov 2021</span>
+                </div>
+            </div>
+
+            <div class="relative w-[322px] flex-shrink-0 h-auto px-[16px]">
+                <div class="relative w-auto">
+                    <img src="/images/img-ba.webp" alt="movie-1" class="rounded-[8px] w-full h-auto object-cover">
+                    <div
+                        class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[50px] h-[50px] bg-[#14213D] rounded-full flex items-center justify-center">
+                        <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="28" cy="28" r="28" fill="black" fill-opacity="0.5" />
+                            <path
+                                d="M20 17.3892V39.6108C19.9999 39.8579 20.0663 40.1005 20.1923 40.3137C20.3183 40.5269 20.4994 40.7028 20.7168 40.8234C20.9342 40.944 21.1802 41.0049 21.4292 40.9997C21.6782 40.9945 21.9214 40.9235 22.1335 40.7941L31.2333 35.2387L40.333 29.6833C40.5368 29.559 40.7051 29.385 40.8219 29.1779C40.9387 28.9707 41 28.7373 41 28.5C41 28.2627 40.9387 28.0293 40.8219 27.8221C40.7051 27.615 40.5368 27.441 40.333 27.3167L22.1335 16.2059C21.9214 16.0765 21.6782 16.0055 21.4292 16.0003C21.1802 15.9951 20.9342 16.056 20.7168 16.1766C20.4994 16.2972 20.3183 16.4731 20.1923 16.6863C20.0663 16.8995 19.9999 17.1421 20 17.3892Z"
+                                fill="#EEEEEE" />
+                        </svg>
+
+                    </div>
+                </div>
+                <div class="w-auto mt-[10px] p-[8px] text-center">
+                    <h3 class="text-[18px] font-bold text-white">Nom du film</h3>
+                    <span class="text-[14px] font-light text-white">Nov 2021</span>
+                </div>
+            </div>
+
+            <div class="relative w-[322px] flex-shrink-0 h-auto px-[16px]">
+                <div class="relative w-auto">
+                    <img src="/images/img-ba.webp" alt="movie-1" class="rounded-[8px] w-full h-auto object-cover">
+                    <div
+                        class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[50px] h-[50px] bg-[#14213D] rounded-full flex items-center justify-center">
+                        <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="28" cy="28" r="28" fill="black" fill-opacity="0.5" />
+                            <path
+                                d="M20 17.3892V39.6108C19.9999 39.8579 20.0663 40.1005 20.1923 40.3137C20.3183 40.5269 20.4994 40.7028 20.7168 40.8234C20.9342 40.944 21.1802 41.0049 21.4292 40.9997C21.6782 40.9945 21.9214 40.9235 22.1335 40.7941L31.2333 35.2387L40.333 29.6833C40.5368 29.559 40.7051 29.385 40.8219 29.1779C40.9387 28.9707 41 28.7373 41 28.5C41 28.2627 40.9387 28.0293 40.8219 27.8221C40.7051 27.615 40.5368 27.441 40.333 27.3167L22.1335 16.2059C21.9214 16.0765 21.6782 16.0055 21.4292 16.0003C21.1802 15.9951 20.9342 16.056 20.7168 16.1766C20.4994 16.2972 20.3183 16.4731 20.1923 16.6863C20.0663 16.8995 19.9999 17.1421 20 17.3892Z"
+                                fill="#EEEEEE" />
+                        </svg>
+
+                    </div>
+                </div>
+                <div class="w-auto mt-[10px] p-[8px] text-center">
+                    <h3 class="text-[18px] font-bold text-white">Nom du film</h3>
+                    <span class="text-[14px] font-light text-white">Nov 2021</span>
+                </div>
+            </div>
+
+            <div class="relative w-[322px] flex-shrink-0 h-auto px-[16px]">
+                <div class="relative w-auto">
+                    <img src="/images/img-ba.webp" alt="movie-1" class="rounded-[8px] w-full h-auto object-cover">
+                    <div
+                        class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[50px] h-[50px] bg-[#14213D] rounded-full flex items-center justify-center">
+                        <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="28" cy="28" r="28" fill="black" fill-opacity="0.5" />
+                            <path
+                                d="M20 17.3892V39.6108C19.9999 39.8579 20.0663 40.1005 20.1923 40.3137C20.3183 40.5269 20.4994 40.7028 20.7168 40.8234C20.9342 40.944 21.1802 41.0049 21.4292 40.9997C21.6782 40.9945 21.9214 40.9235 22.1335 40.7941L31.2333 35.2387L40.333 29.6833C40.5368 29.559 40.7051 29.385 40.8219 29.1779C40.9387 28.9707 41 28.7373 41 28.5C41 28.2627 40.9387 28.0293 40.8219 27.8221C40.7051 27.615 40.5368 27.441 40.333 27.3167L22.1335 16.2059C21.9214 16.0765 21.6782 16.0055 21.4292 16.0003C21.1802 15.9951 20.9342 16.056 20.7168 16.1766C20.4994 16.2972 20.3183 16.4731 20.1923 16.6863C20.0663 16.8995 19.9999 17.1421 20 17.3892Z"
+                                fill="#EEEEEE" />
+                        </svg>
+
+                    </div>
+                </div>
+                <div class="w-auto mt-[10px] p-[8px] text-center">
+                    <h3 class="text-[18px] font-bold text-white">Nom du film</h3>
+                    <span class="text-[14px] font-light text-white">Nov 2021</span>
+                </div>
+            </div>
+
+            <div class="relative w-[322px] flex-shrink-0 h-auto px-[16px]">
+                <div class="relative w-auto">
+                    <img src="/images/img-ba.webp" alt="movie-1" class="rounded-[8px] w-full h-auto object-cover">
+                    <div
+                        class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[50px] h-[50px] bg-[#14213D] rounded-full flex items-center justify-center">
+                        <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="28" cy="28" r="28" fill="black" fill-opacity="0.5" />
+                            <path
+                                d="M20 17.3892V39.6108C19.9999 39.8579 20.0663 40.1005 20.1923 40.3137C20.3183 40.5269 20.4994 40.7028 20.7168 40.8234C20.9342 40.944 21.1802 41.0049 21.4292 40.9997C21.6782 40.9945 21.9214 40.9235 22.1335 40.7941L31.2333 35.2387L40.333 29.6833C40.5368 29.559 40.7051 29.385 40.8219 29.1779C40.9387 28.9707 41 28.7373 41 28.5C41 28.2627 40.9387 28.0293 40.8219 27.8221C40.7051 27.615 40.5368 27.441 40.333 27.3167L22.1335 16.2059C21.9214 16.0765 21.6782 16.0055 21.4292 16.0003C21.1802 15.9951 20.9342 16.056 20.7168 16.1766C20.4994 16.2972 20.3183 16.4731 20.1923 16.6863C20.0663 16.8995 19.9999 17.1421 20 17.3892Z"
+                                fill="#EEEEEE" />
+                        </svg>
+
+                    </div>
+                </div>
+                <div class="w-auto mt-[10px] p-[8px] text-center">
+                    <h3 class="text-[18px] font-bold text-white">Nom du film</h3>
+                    <span class="text-[14px] font-light text-white">Nov 2021</span>
+                </div>
+            </div>
+
+            <!-- Répétez la structure des cartes ci-dessus pour chaque film -->
+            <!-- ... -->
+        </div>
+    </section>
+
+    <section class="mt-[32px] ps-[104px] mb-[32px] relative">
+        <!-- En-tête de la section -->
+        <div class="flex gap-[16px] items-center px-[20px]">
+            <h2 class="text-[24px] font-bold text-black">Genres</h2>
+            <!-- SVG Icon -->
+            <svg width="21" height="6" viewBox="0 0 21 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_475_1945)">
+                    <path d="M15.0161 1H19.0161V5" stroke="black" stroke-width="1.8" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path
+                        d="M1.01611 3.00007C1.90311 1.71607 3.49611 0.96707 5.01611 1.00007C6.53611 0.96707 8.12911 1.71607 9.01611 3.00007C9.90311 4.28407 11.4961 5.03307 13.0161 5.00007C14.5361 5.03307 16.0161 4.00007 17.0161 3.00007L19.0161 1.00007"
+                        stroke="black" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                </g>
+                <defs>
+                    <clipPath id="clip0_475_1945">
+                        <rect width="20" height="6" fill="white" transform="translate(0.0161133)" />
+                    </clipPath>
+                </defs>
+            </svg>
+            <!-- Boutons de navigation -->
+            <a href="#" class="text-[20px] text-black rounded-full px-[32px] py-[4px] bg-[#FCA311]">
+                Films
+            </a>
+            <a href="#" class="text-[20px] text-black rounded-full px-[32px] py-[4px] bg-[#D0D0D0]">
+                Séries
+            </a>
+        </div>
+
+        <!-- Conteneur des cartes avec flex-nowrap, overflow-x-auto, et classe pour masquer la scrollbar -->
+        <div class="mt-[32px] flex flex-nowrap gap-[32px] overflow-x-auto hide-scrollbar">
+            <!-- Carte 1 -->
+            <div
+                class="group relative w-[200px] h-[103px] flex-shrink-0 px-[16px] bg-[#14213D] rounded-[8px] flex items-center justify-center text-white font-bold text-[24px] overflow-hidden">
+                <!-- Image de fond au hover -->
+                <img src="/images/img-genre.webp" alt="Genre"
+                    class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+
+                <!-- Texte de la carte -->
+                <span class="z-10">Action</span>
+            </div>
+
+            <div
+                class="group relative w-[200px] h-[103px] flex-shrink-0 px-[16px] bg-[#14213D] rounded-[8px] flex items-center justify-center text-white font-bold text-[24px] overflow-hidden">
+                <!-- Image de fond au hover -->
+                <img src="/images/img-genre.webp" alt="Genre"
+                    class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+
+                <!-- Texte de la carte -->
+                <span class="z-10">Action</span>
+            </div>
+
+            <div
+                class="group relative w-[200px] h-[103px] flex-shrink-0 px-[16px] bg-[#14213D] rounded-[8px] flex items-center justify-center text-white font-bold text-[24px] overflow-hidden">
+                <!-- Image de fond au hover -->
+                <img src="/images/img-genre.webp" alt="Genre"
+                    class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+
+                <!-- Texte de la carte -->
+                <span class="z-10">Action</span>
+            </div>
+
+            <div
+                class="group relative w-[200px] h-[103px] flex-shrink-0 px-[16px] bg-[#14213D] rounded-[8px] flex items-center justify-center text-white font-bold text-[24px] overflow-hidden">
+                <!-- Image de fond au hover -->
+                <img src="/images/img-genre.webp" alt="Genre"
+                    class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+
+                <!-- Texte de la carte -->
+                <span class="z-10">Action</span>
+            </div>
+
+            <div
+                class="group relative w-[200px] h-[103px] flex-shrink-0 px-[16px] bg-[#14213D] rounded-[8px] flex items-center justify-center text-white font-bold text-[24px] overflow-hidden">
+                <!-- Image de fond au hover -->
+                <img src="/images/img-genre.webp" alt="Genre"
+                    class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+
+                <!-- Texte de la carte -->
+                <span class="z-10">Action</span>
+            </div>
+
+            <div
+                class="group relative w-[200px] h-[103px] flex-shrink-0 px-[16px] bg-[#14213D] rounded-[8px] flex items-center justify-center text-white font-bold text-[24px] overflow-hidden">
+                <!-- Image de fond au hover -->
+                <img src="/images/img-genre.webp" alt="Genre"
+                    class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+
+                <!-- Texte de la carte -->
+                <span class="z-10">Action</span>
+            </div>
+
+            <div
+                class="group relative w-[200px] h-[103px] flex-shrink-0 px-[16px] bg-[#14213D] rounded-[8px] flex items-center justify-center text-white font-bold text-[24px] overflow-hidden">
+                <!-- Image de fond au hover -->
+                <img src="/images/img-genre.webp" alt="Genre"
+                    class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+
+                <!-- Texte de la carte -->
+                <span class="z-10">Action</span>
+            </div>
+            <!-- Répétez la structure des cartes ci-dessus pour chaque film -->
+            <!-- ... -->
+        </div>
+    </section>
+
+
+    <div id="footer"></div>
+
+    <script type="module" src="./dist/app.js"></script>
+    <script type="module" src="./dist/index.js"></script>
+    <script type="module" src="./dist/movies.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@1.6.4/dist/flowbite.js"></script>
+    <script src="https://cdn.lordicon.com/lordicon.js"></script>
+
 
 </body>
+
 </html>
