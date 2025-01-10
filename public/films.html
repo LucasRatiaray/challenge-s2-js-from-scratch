@@ -9,11 +9,6 @@
     <script src="https://cdn.lordicon.com/lordicon.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        @tailwind base;
-        @tailwind components;
-        @tailwind utilities;
-
-        /* We define these colors to match your theme */
         :root {
             --primary: #495e57;
             --secondary: #f4ce14;
@@ -49,7 +44,7 @@
             <div class="hidden xl:block">
                 <ul class="flex space-x-8 items-center">
                     <li><a href="#" class="text-white font-semibold hover:text-secondary underline underline-offset-8 decoration-secondary">Movies</a></li>
-                    <li><a href="#" class="text-white font-semibold hover:text-secondary hover:underline hover:underline-offset-8 hover:decoration-secondary">Series</a></li>
+                    <li><a href="series.html" class="text-white font-semibold hover:text-secondary hover:underline hover:underline-offset-8 hover:decoration-secondary">Series</a></li>
                     <li><a href="#" class="text-white font-semibold hover:text-secondary hover:underline hover:underline-offset-8 hover:decoration-secondary">Genres</a></li>
                     <li><a href="#" class="text-white font-semibold hover:text-secondary hover:underline hover:underline-offset-8 hover:decoration-secondary">Our Reviews</a></li>
                     <button onclick="window.location.href='/login-signup.html'" type="button" class="border-2 border-secondary text-primary bg-secondary font-medium rounded-full py-1 px-4 text-center hover:bg-primary hover:text-white hover:border-white">Sign in</button>
@@ -70,17 +65,25 @@
             <div class="bg-white rounded-lg p-4">
                 <h2 class="font-bold mb-4">Trier les résultats</h2>
                 <div class="space-y-2">
-                    <button class="w-full text-left px-3 py-2 hover:bg-gray-100 rounded">Titres de A à Z</button>
-                    <button class="w-full text-left px-3 py-2 hover:bg-gray-100 rounded">Titres de Z à A</button>
-                    <button class="w-full text-left px-3 py-2 hover:bg-gray-100 rounded">Popularité</button>
-                    <button class="w-full text-left px-3 py-2 hover:bg-gray-100 rounded">Tendances</button>
+                    <button id="sort-az" class="w-full text-left px-3 py-2 hover:bg-gray-100 rounded transition-colors">
+                        Titres de A à Z
+                    </button>
+                    <button id="sort-za" class="w-full text-left px-3 py-2 hover:bg-gray-100 rounded transition-colors">
+                        Titres de Z à A
+                    </button>
+                    <button id="sort-popularity" class="w-full text-left px-3 py-2 hover:bg-gray-100 rounded transition-colors">
+                        Popularité
+                    </button>
+                    <button id="sort-trending" class="w-full text-left px-3 py-2 hover:bg-gray-100 rounded transition-colors">
+                        Tendances
+                    </button>
                 </div>
             </div>
 
             <!-- Filters -->
             <div class="bg-white rounded-lg p-4">
                 <h2 class="font-bold mb-4">Filtrer les résultats</h2>
-                <div class="flex flex-wrap gap-2">
+                <div class="flex flex-wrap gap-2" id="genre-filters">
                     <button class="px-3 py-1 bg-gray-100 rounded-full hover:bg-gray-200">Action</button>
                     <button class="px-3 py-1 bg-gray-100 rounded-full hover:bg-gray-200">Animation</button>
                     <button class="px-3 py-1 bg-gray-100 rounded-full hover:bg-gray-200">Aventure</button>
@@ -97,14 +100,14 @@
 
         <!-- Movies Grid -->
         <div class="flex-1">
-            <div class="grid grid-cols-5 gap-6">
+            <div class="grid grid-cols-5 gap-6" id="movies-container">
                 <!-- Movie cards will be populated here -->
             </div>
         </div>
     </div>
 
     <!-- Pagination -->
-    <div class="flex justify-center mt-8 gap-1">
+    <div class="flex justify-center mt-8 gap-1" id="pagination">
         <button class="px-3 py-1 bg-[#14213D] text-white rounded">Précédent</button>
         <button class="px-3 py-1 bg-[#FCA311] text-[#14213D] rounded font-bold">1</button>
         <button class="px-3 py-1 bg-[#14213D] text-white rounded">2</button>
@@ -116,26 +119,12 @@
     </div>
 </main>
 
-<!-- Footer -->
-<footer class="bg-primary dark:bg-gray-900">
-    <div class="w-full max-w-screen-xl mx-auto md:py-8">
-        <div class="sm:flex sm:items-center sm:justify-between">
-            <!-- Logo -->
-            <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
-                <lord-icon src="https://cdn.lordicon.com/ulttckpo.json" trigger="loop" delay="2000"
-                           colors="primary:#121331,secondary:#e4e4e4,tertiary:#f4ce14,quaternary:#495e57" class="w-16 h-16">
-                </lord-icon>
-                <span class="self-center text-3xl font-extrabold whitespace-nowrap text-secondary dark:text-white">GeorgesHub</span>
-            </a>
-            <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-white sm:mb-0 dark:text-gray-400 gap-4">
-                <li>
-                    <a href="#" class="text-base rounded-full py-2 px-4 text-primary bg-secondary text-md border-2 border-secondary hover:bg-primary hover:text-white hover:border-white">Contact us</a>
-                </li>
-            </ul>
-        </div>
-        <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-        <span class="block text-sm text-white sm:text-center dark:text-gray-400">© 2024 <a href="" class="hover:underline">GeorgesHub™</a>. All Rights Reserved.</span>
-    </div>
-</footer>
+<div id="footer"></div>
+
+    <script type="module" src="../dist/app.js"></script>
+    <script type="module" src="../dist/index.js"></script>
+    <script type="module" src="../dist/films.js"></script>
+    <script src="../node_modules/flowbite/dist/flowbite.js"></script>
+    <script src="https://cdn.lordicon.com/lordicon.js"></script>
 </body>
 </html>

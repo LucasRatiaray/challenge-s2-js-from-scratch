@@ -46,30 +46,28 @@ const tvGenres = [
 
 // Function to get random items from an array
 function getRandomItems(array: any[], numItems: number) {
-  const shuffled = array.sort(() => 0.5 - Math.random()); // Shuffle the array
-  return shuffled.slice(0, numItems); // Return the first numItems
+  const shuffled = array.sort(() => 0.5 - Math.random());
+  return shuffled.slice(0, numItems);
 }
 
 export function generateStars(voteAverage: number) {
   const maxStars = 5;
-  const rating = Math.round(voteAverage / 2); // Convertir la note sur 5
+  const rating = Math.round(voteAverage / 2);
   let starsHtml = "";
 
   for (let i = 1; i <= maxStars; i++) {
     if (i <= rating) {
-      // Étoile pleine
       starsHtml += `
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-yellow-500" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-        </svg>
-      `;
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-yellow-500" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                </svg>
+            `;
     } else {
-      // Étoile vide
       starsHtml += `
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-400" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-        </svg>
-      `;
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-400" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                </svg>
+            `;
     }
   }
 
@@ -77,128 +75,160 @@ export function generateStars(voteAverage: number) {
 }
 
 function displayMovies(movies: any[], type = "movie") {
-  // Sélectionner le conteneur où les cartes seront insérées
-  const moviesContainer = document.querySelector(`.grid.trending-${type}`);
+  const moviesContainer = type === "movie"
+      ? document.querySelector('#trending-content')
+      : document.querySelector('#popular-content');
 
   if (moviesContainer) {
-    // Vider le conteneur au cas où il y aurait déjà du contenu
     moviesContainer.innerHTML = "";
 
+    const gridContainer = document.createElement('div');
+    gridContainer.className = 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6';
+
     movies.forEach((movie) => {
-      // Créer un élément div pour la carte
       const card = document.createElement("div");
       card.classList.add(
-        "bg-white",
-        "rounded-lg",
-        "shadow-md",
-        "overflow-hidden",
+          "bg-white",
+          "rounded-lg",
+          "shadow-md",
+          "overflow-hidden",
       );
 
-      // Générer le contenu HTML de la carte
       card.innerHTML = `
-        <div class="h-48 md:h-48 lg:h-56 w-full overflow-hidden">
-          <img class="w-full h-full object-cover" src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
-        </div>
-        <div class="p-4">
-          <h3 class="text-lg font-semibold mb-2">
-            <a href="/detail.html?movie_id=${movie.id}">${movie.title ? movie.title : movie.name}</a>
-          </h3>
-          <div class="flex justify-between items-center gap-0.5">
-            <div class="flex gap-0 text-yellow-500 hover:text-yellow-500">
-              ${generateStars(movie.vote_average)}
-            </div>
-            <button class="text-gray-400 hover:text-red-500">
-              <!-- Icône de favori -->
-              <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-6 h-6" viewBox="0 0 24 24">
-                <path d="M4.318 6.318a4.5 4.5 0 0 1 6.364 0L12 7.636l1.318-1.318a4.5 4.5 0 1 1 6.364 6.364L12 21.364l-7.682-7.682a4.5 4.5 0 0 1 0-6.364z"/>
-              </svg>
-            </button>
-          </div>
-        </div>
-      `;
+                <div class="h-48 md:h-48 lg:h-56 w-full overflow-hidden">
+                    <img class="w-full h-full object-cover" src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
+                </div>
+                <div class="p-4">
+                    <h3 class="text-lg font-semibold mb-2">
+                        <a href="/detail.html?movie_id=${movie.id}">${movie.title ? movie.title : movie.name}</a>
+                    </h3>
+                    <div class="flex justify-between items-center gap-0.5">
+                        <div class="flex gap-0 text-yellow-500 hover:text-yellow-500">
+                            ${generateStars(movie.vote_average)}
+                        </div>
+                        <button class="text-gray-400 hover:text-red-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-6 h-6" viewBox="0 0 24 24">
+                                <path d="M4.318 6.318a4.5 4.5 0 0 1 6.364 0L12 7.636l1.318-1.318a4.5 4.5 0 1 1 6.364 6.364L12 21.364l-7.682-7.682a4.5 4.5 0 0 1 0-6.364z"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            `;
 
-      // Ajouter la carte au conteneur
-      moviesContainer.appendChild(card);
+      gridContainer.appendChild(card);
     });
+
+    moviesContainer.appendChild(gridContainer);
   } else {
     console.error("Le conteneur des films n'a pas été trouvé dans le DOM.");
   }
 }
 
+// Search functionality
+const searchInput = document.querySelector('input[placeholder="Rechercher..."]') as HTMLInputElement;
+if (searchInput) {
+  searchInput.addEventListener('input', debounce(async (e: Event) => {
+    const searchTerm = (e.target as HTMLInputElement).value;
+    if (searchTerm.length > 2) {
+      try {
+        const response = await fetch(
+            `${apiUrl}/3/search/multi?api_key=${apiKey}&language=fr-FR&query=${searchTerm}`
+        );
+        const data = await response.json();
+        // Handle search results here
+        console.log(data.results);
+      } catch (error) {
+        console.error('Error searching:', error);
+      }
+    }
+  }, 500));
+}
+
+// Debounce helper function
+function debounce(func: Function, wait: number) {
+  let timeout: NodeJS.Timeout;
+  return function executedFunction(...args: any[]) {
+    const later = () => {
+      clearTimeout(timeout);
+      func(...args);
+    };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
+}
+
 document.addEventListener("DOMContentLoaded", function () {
   console.log("DOM is fully loaded!");
-  // Your code here
 
-  // display movies trending today
+  // Fetch trending movies
   fetch(`${apiUrl}/3/trending/movie/day?api_key=${apiKey}&language=fr-FR`)
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-      return response.json(); // Convert response to JSON
-    })
-    .then((data) => {
-      const movies = data.results;
-      displayMovies(movies);
-    })
-    .catch((error) => {
-      console.error("Error fetching data:", error);
-    });
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        displayMovies(data.results, "movie");
+      })
+      .catch((error) => {
+        console.error("Error fetching movies:", error);
+      });
 
-  // display tv trending today
+  // Fetch trending TV shows
   fetch(`${apiUrl}/3/trending/tv/day?api_key=${apiKey}&language=fr-FR`)
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-      return response.json(); // Convert response to JSON
-    })
-    .then((data) => {
-      console.log("new");
-      const movies = data.results;
-      console.log({ movies });
-      displayMovies(movies, "tv");
-    })
-    .catch((error) => {
-      console.error("Error fetching data:", error);
-    });
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        displayMovies(data.results, "tv");
+      })
+      .catch((error) => {
+        console.error("Error fetching TV shows:", error);
+      });
 
-  // display movie genres
-  // Merging the arrays
-  const allGenres = [...movieGenres];
-
-  // Get 8 random genres
-  const randomGenres = getRandomItems(allGenres, 8);
-  console.log({ randomGenres });
-  // show genres
-  const genresContainer = document.querySelector("#list-genres");
+  // Display genres
+  const genresContainer = document.querySelector("#genres-content");
+  const randomGenres = getRandomItems(movieGenres, 8);
 
   if (genresContainer) {
+    const gridContainer = document.createElement('div');
+    gridContainer.className = 'grid grid-cols-2 md:grid-cols-4 gap-4';
+
     randomGenres.forEach((genre) => {
       const genreElement = document.createElement("div");
       genreElement.classList.add(
-        "bg-gray-800",
-        "shadow-xl",
-        "group",
-        "hover:cursor-pointer",
-        "rounded-xl",
-        "relative",
-        "overflow-hidden",
+          "bg-gray-800",
+          "shadow-xl",
+          "group",
+          "hover:cursor-pointer",
+          "rounded-xl",
+          "relative",
+          "overflow-hidden",
       );
+
       genreElement.innerHTML = `
-        <figure>
-          <img
-            src="https://img.freepik.com/free-photo/view-3d-cinema-theatre-room_23-2150866033.jpg?t=st=1730222456~exp=1730226056~hmac=73ec6c66c035488d546fe56b922ece6a676feed0b2a12243ce07d1c95507aea5&w=996"
-            alt="${genre.name}"
-            class="w-full h-44 object-cover opacity-30 group-hover:opacity-40"
-          />
-        </figure>
-        <div class="absolute inset-0 flex justify-center items-center">
-          <a href="/movies.html?genre_id=${genre.id}"><h2 class="uppercase font-bold text-xl text-white">${genre.name}</h2></a>
-        </div>
-      `;
-      genresContainer.appendChild(genreElement);
+                <figure>
+                    <img
+                        src="https://img.freepik.com/free-photo/view-3d-cinema-theatre-room_23-2150866033.jpg?t=st=1730222456~exp=1730226056~hmac=73ec6c66c035488d546fe56b922ece6a676feed0b2a12243ce07d1c95507aea5&w=996"
+                        alt="${genre.name}"
+                        class="w-full h-44 object-cover opacity-30 group-hover:opacity-40"
+                    />
+                </figure>
+                <div class="absolute inset-0 flex justify-center items-center">
+                    <a href="/movies.html?genre_id=${genre.id}">
+                        <h2 class="uppercase font-bold text-xl text-white">${genre.name}</h2>
+                    </a>
+                </div>
+            `;
+
+      gridContainer.appendChild(genreElement);
     });
+
+    genresContainer.appendChild(gridContainer);
   } else {
     console.error("Le conteneur des genres n'a pas été trouvé dans le DOM.");
   }

@@ -49,55 +49,6 @@ function updatePage(page: number, category: string) {
   window.location.href = `/movies.html?category=${category}&page=${page}`;
 }
 
-function generatePagination(
-  category: string,
-  current_page: number,
-  total_page: number,
-  total_results: number,
-) {
-  const paginationContainer = document.getElementById("pagination");
-  console.log({ paginationContainer });
-
-  if (paginationContainer) {
-    paginationContainer.innerHTML = ""; // Clear the container
-
-    // Previous button
-    const prevButton = document.createElement("button");
-    prevButton.textContent = "« Précédent";
-    prevButton.className =
-      "px-4 py-2 bg-blue-900 text-white rounded-l-lg hover:bg-blue-700 transition";
-    prevButton.disabled = current_page === 1;
-    prevButton.onclick = () => updatePage(current_page - 1, category);
-    paginationContainer.appendChild(prevButton);
-
-    // Page numbers
-    for (let i = 1; i <= total_page; i++) {
-      const pageButton = document.createElement("button");
-      if (pageButton) {
-        pageButton.textContent = `${i}`;
-        pageButton.className = "px-4 py-2 bg-blue-900 text-white font-bold";
-        if (i === current_page) {
-          pageButton.classList.add("active", "bg-yellow-500", "text-black");
-          pageButton.disabled = true; // Disable the current page button
-        }
-        pageButton.onclick = () => updatePage(i, category);
-        paginationContainer.appendChild(pageButton);
-      }
-      if (i > 5) {
-        break;
-      }
-    }
-
-    // Next button
-    const nextButton = document.createElement("button");
-    nextButton.textContent = "Suivant »";
-    nextButton.className =
-      "px-4 py-2 bg-blue-900 text-white rounded-r-lg hover:bg-blue-700 transition";
-    nextButton.disabled = current_page === total_page;
-    nextButton.onclick = () => updatePage(current_page + 1, category);
-    paginationContainer.appendChild(nextButton);
-  }
-}
 
 export function generateStars(voteAverage: number) {
   const maxStars = 5;
@@ -174,14 +125,95 @@ function displayMovies(movies: any[]) {
   }
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-  console.log("DOM is fully loaded!");
-  // Your code here
+async function fetchMovieMedia(movieId: string) {
+  const videosResponse = await fetch(`${apiUrl}/3/movie/${movieId}/videos?api_key=${apiKey}&language=fr-FR`);
+  const imagesResponse = await fetch(`${apiUrl}/3/movie/${movieId}/images?api_key=${apiKey}`);
+  
+  const videos = await videosResponse.json();
+  const images = await imagesResponse.json();
+  
+  return { videos, images };
+}
 
-  // get current state of the URL
+function displayVideos(videos: any[]) {
+  const mediaContent = document.getElementById('media-content');
+  if (!mediaContent) return;
+
+  mediaContent.innerHTML = '';
+  videos.forEach(video => {
+      if (video.site === 'YouTube') {
+          const videoDiv = document.createElement('div');
+          videoDiv.className = 'mb-4';
+          videoDiv.innerHTML = `
+              <iframe width="560" height="315" 
+                  src="https://www.youtube.com/embed/${video.key}" 
+                  frameborder="0" allowfullscreen
+                  class="rounded-lg">
+              </iframe>
+          `;
+          mediaContent.appendChild(videoDiv);
+      }
+  });
+}
+
+function displayImages(images: any[], type: 'backdrops' | 'posters') {
+  const mediaContent = document.getElementById('media-content');
+  if (!mediaContent) return;
+
+  mediaContent.innerHTML = '';
+  const container = document.createElement('div');
+  container.className = 'grid grid-cols-4 gap-4';
+
+  images[type].forEach(image => {
+      container.innerHTML += `
+          <div class="aspect-[16/9] rounded-lg overflow-hidden">
+              <img src="https://image.tmdb.org/t/p/w500${image.file_path}" 
+                   alt="Movie ${type}" 
+                   class="w-full h-full object-cover">
+          </div>
+      `;
+  });
+
+  mediaContent.appendChild(container);
+}
+
+async function fetchMovieRecommendations(movieId: string) {
+  try {
+      const response = await fetch(
+          `${apiUrl}/3/movie/${movieId}/recommendations?api_key=${apiKey}&language=fr-FR&page=1`
+      );
+      const data = await response.json();
+      return data.results.slice(0, 5); // Return only first 5 recommendations
+  } catch (error) {
+      console.error("Error fetching recommendations:", error);
+      return [];
+  }
+}
+
+function displayRecommendations(recommendations: any[]) {
+  const container = document.getElementById('recommendations-grid');
+  if (!container) return;
+
+  container.innerHTML = recommendations.map(movie => `
+      <div class="cursor-pointer" onclick="window.location.href='detail.html?movie_id=${movie.id}'">
+          <div class="relative aspect-[2/3] rounded-lg overflow-hidden mb-2">
+              <img 
+                  src="https://image.tmdb.org/t/p/w500${movie.poster_path}"
+                  alt="${movie.title}"
+                  class="w-full h-full object-cover"
+              >
+          </div>
+          <h3 class="font-semibold text-sm">${movie.title}</h3>
+          <p class="text-sm text-gray-400">${movie.release_date?.split('-')[0] || 'N/A'}</p>
+      </div>
+  `).join('');
+}
+document.addEventListener("DOMContentLoaded", async function () {
   const params = new URLSearchParams(window.location.search);
+  const isMovie = params.has("movie_id");
 
-  // Access parameters directly
+  if (!isMovie) return; // Only continue if this is a movie
+
   const movie_id = params.get("movie_id") || "";
 
   // display movies trending today
@@ -278,4 +310,41 @@ document.addEventListener("DOMContentLoaded", function () {
     .catch((error) => {
       console.error("Error fetching data:", error);
     });
+    const movieId = params.get("movie_id") || "";
+    const mediaData = await fetchMovieMedia(movieId);
+
+    // Update tab counts
+    const tabs = document.querySelectorAll('.media-tab');
+    tabs[0].textContent = `Vidéos (${mediaData.videos.results.length})`;
+    tabs[1].textContent = `Fonds d'écran (${mediaData.images.backdrops.length})`;
+    tabs[2].textContent = `Affiches (${mediaData.images.posters.length})`;
+
+    // Add click handlers to tabs
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            // Update active state
+            tabs.forEach(t => t.classList.replace('bg-[#FCA311]', 'bg-gray-200'));
+            tab.classList.replace('bg-gray-200', 'bg-[#FCA311]');
+
+            // Display appropriate content
+            const type = (tab as HTMLElement).dataset.tabType;
+            switch(type) {
+                case 'videos':
+                    displayVideos(mediaData.videos.results);
+                    break;
+                case 'wallpapers':
+                    displayImages(mediaData.images, 'backdrops');
+                    break;
+                case 'posters':
+                    displayImages(mediaData.images, 'posters');
+                    break;
+            }
+        });
+    });
+
+    // Show videos by default
+    displayVideos(mediaData.videos.results);
+    
+    const recommendations = await fetchMovieRecommendations(movieId);
+    displayRecommendations(recommendations);
 });

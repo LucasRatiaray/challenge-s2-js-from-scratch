@@ -33,3 +33,10 @@
     background-color: rgba(0, 0, 0, 0.8); /* bg-gray-900 with 50% opacity */
     z-index: -1; /* Place it behind the content */
 }
+
+#backdrop-container {
+    transition: opacity 0.3s ease;
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.7);
+}

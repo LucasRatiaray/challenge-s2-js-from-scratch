@@ -15,6 +15,7 @@
 
 <!-- Movie Details Hero Section -->
 <div class="bg-[#14213D] text-white">
+    <div id="backdrop-container" class="absolute inset-0 w-full h-full opacity-30 bg-cover bg-center"></div>
     <div class="container mx-auto px-4 py-8">
         <div class="flex gap-8">
             <!-- Movie Poster -->
@@ -34,17 +35,17 @@
                 </div>
 
                 <div class="bg-blue-600 inline-block px-3 py-1 rounded-full mb-6">
-                    <span id="movie-rating">87%</span> Score d'évaluation
+                    <span id="movie-rating"></span> Score d'évaluation
                 </div>
 
                 <div class="mb-6">
                     <h2 class="text-xl font-semibold mb-2">Synopsis</h2>
-                    <p id="movie-synopsis" class="text-gray-300">Loading synopsis...</p>
+                    <p id="movie-synopsis" class="text-gray-300"></p>
                 </div>
 
                 <div>
                     <h3 class="font-semibold mb-1">Créatrice / Créateur</h3>
-                    <p id="movie-director">Loading director...</p>
+                    <p id="movie-director"></p>
                 </div>
 
                 <div class="flex gap-4 mt-4">
@@ -84,13 +85,13 @@
         <h2 class="text-2xl font-bold">Médias</h2>
         <div class="flex gap-2">
             <button data-tab-type="videos" class="media-tab px-4 py-2 bg-[#FCA311] text-white rounded-full">
-                Vidéos (1)
+                Vidéos ()
             </button>
             <button data-tab-type="wallpapers" class="media-tab px-4 py-2 bg-gray-200 rounded-full">
-                Fonds d'écran (17)
+                Fonds d'écran ()
             </button>
             <button data-tab-type="posters" class="media-tab px-4 py-2 bg-gray-200 rounded-full">
-                Affiches (10)
+                Affiches ()
             </button>
         </div>
     </div>
@@ -115,7 +116,8 @@
 <script type="module" src="../dist/app.js"></script>
     <script type="module" src="../dist/index.js"></script>
     <!-- <script type="module" src="../dist/movies.js"></script> -->
-    <script type="module" src="../dist/detail.js"></script>
+    <script type="module" src="../dist/detail-films.js"></script>
+    <script type="module" src="../dist/detail-series.js"></script>
     <script src="../node_modules/flowbite/dist/flowbite.js"></script>
     <script src="https://cdn.lordicon.com/lordicon.js"></script>
 </body>
