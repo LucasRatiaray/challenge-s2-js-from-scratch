@@ -45,8 +45,7 @@ const tvGenres = [
 ];
 
 function updatePage(page: number, category: string) {
-  console.log({ page, category });
-  window.location.href = `/movies.html?category=${category}&page=${page}`;
+  window.location.href = `/tv.html?page=${page}`;
 }
 
 function generatePagination(
@@ -178,42 +177,17 @@ document.addEventListener("DOMContentLoaded", function () {
   console.log("DOM is fully loaded!");
   // Your code here
 
-  // active nav
-  const navItems = document.querySelector("#nav-movies");
-  if (navItems) {
-    navItems.classList.add("underline", "underline-offset-8");
-  }
-
-  // active genre
-  const movieGenresContainer = document.querySelector("#movie-genres");
-  console.log({ movieGenresContainer });
-  if (movieGenresContainer) {
-    movieGenresContainer.innerHTML = "";
-    movieGenres.forEach((genre) => {
-      const genreElement = document.createElement("button");
-      genreElement.className =
-        "px-3 py-1 bg-gray-100 rounded-full hover:bg-gray-200";
-      genreElement.innerHTML = `
-        <a href="/movies.html?genre_id=${genre.id}">${genre.name}</a>`;
-      movieGenresContainer.appendChild(genreElement);
-    });
-  }
-
   // get current state of the URL
   const params = new URLSearchParams(window.location.search);
 
   // Access parameters directly
   const category = params.get("category") || "now_playing";
   const page = params.get("page") || 1;
-  const genre_id = params.get("genre_id") || "";
 
-  let url = `${apiUrl}/3/movie/${category}?api_key=${apiKey}&language=fr-FR&page=${page}&with_genres=${genre_id}`;
-
-  if (genre_id) {
-    url = `${apiUrl}/3/discover/movie?api_key=${apiKey}&language=fr-FR&page=${page}&with_genres=${genre_id}`;
-  }
   // display movies trending today
-  fetch(url)
+  fetch(
+    `${apiUrl}/3/trending/tv/day?api_key=${apiKey}&language=fr-FR&page=${page}`,
+  )
     .then((response) => {
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);

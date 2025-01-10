@@ -44,59 +44,10 @@ const tvGenres = [
   { id: 37, name: "Western" },
 ];
 
-function updatePage(page: number, category: string) {
-  console.log({ page, category });
-  window.location.href = `/movies.html?category=${category}&page=${page}`;
-}
-
-function generatePagination(
-  category: string,
-  current_page: number,
-  total_page: number,
-  total_results: number,
-) {
-  const paginationContainer = document.getElementById("pagination");
-  console.log({ paginationContainer });
-
-  if (paginationContainer) {
-    paginationContainer.innerHTML = ""; // Clear the container
-
-    // Previous button
-    const prevButton = document.createElement("button");
-    prevButton.textContent = "« Précédent";
-    prevButton.className =
-      "px-4 py-2 bg-blue-900 text-white rounded-l-lg hover:bg-blue-700 transition";
-    prevButton.disabled = current_page === 1;
-    prevButton.onclick = () => updatePage(current_page - 1, category);
-    paginationContainer.appendChild(prevButton);
-
-    // Page numbers
-    for (let i = 1; i <= total_page; i++) {
-      const pageButton = document.createElement("button");
-      if (pageButton) {
-        pageButton.textContent = `${i}`;
-        pageButton.className = "px-4 py-2 bg-blue-900 text-white font-bold";
-        if (i === current_page) {
-          pageButton.classList.add("active", "bg-yellow-500", "text-black");
-          pageButton.disabled = true; // Disable the current page button
-        }
-        pageButton.onclick = () => updatePage(i, category);
-        paginationContainer.appendChild(pageButton);
-      }
-      if (i > 5) {
-        break;
-      }
-    }
-
-    // Next button
-    const nextButton = document.createElement("button");
-    nextButton.textContent = "Suivant »";
-    nextButton.className =
-      "px-4 py-2 bg-blue-900 text-white rounded-r-lg hover:bg-blue-700 transition";
-    nextButton.disabled = current_page === total_page;
-    nextButton.onclick = () => updatePage(current_page + 1, category);
-    paginationContainer.appendChild(nextButton);
-  }
+// Function to get random items from an array
+function getRandomItems(array: any[], numItems: number) {
+  const shuffled = array.sort(() => 0.5 - Math.random()); // Shuffle the array
+  return shuffled.slice(0, numItems); // Return the first numItems
 }
 
 export function generateStars(voteAverage: number) {
@@ -125,9 +76,9 @@ export function generateStars(voteAverage: number) {
   return starsHtml;
 }
 
-function displayMovies(movies: any[]) {
+function displayMovies(movies: any[], type = "movie") {
   // Sélectionner le conteneur où les cartes seront insérées
-  const moviesContainer = document.querySelector(`.grid.movie-list`);
+  const moviesContainer = document.querySelector(`.grid.trending-${type}`);
 
   if (moviesContainer) {
     // Vider le conteneur au cas où il y aurait déjà du contenu
@@ -178,42 +129,8 @@ document.addEventListener("DOMContentLoaded", function () {
   console.log("DOM is fully loaded!");
   // Your code here
 
-  // active nav
-  const navItems = document.querySelector("#nav-movies");
-  if (navItems) {
-    navItems.classList.add("underline", "underline-offset-8");
-  }
-
-  // active genre
-  const movieGenresContainer = document.querySelector("#movie-genres");
-  console.log({ movieGenresContainer });
-  if (movieGenresContainer) {
-    movieGenresContainer.innerHTML = "";
-    movieGenres.forEach((genre) => {
-      const genreElement = document.createElement("button");
-      genreElement.className =
-        "px-3 py-1 bg-gray-100 rounded-full hover:bg-gray-200";
-      genreElement.innerHTML = `
-        <a href="/movies.html?genre_id=${genre.id}">${genre.name}</a>`;
-      movieGenresContainer.appendChild(genreElement);
-    });
-  }
-
-  // get current state of the URL
-  const params = new URLSearchParams(window.location.search);
-
-  // Access parameters directly
-  const category = params.get("category") || "now_playing";
-  const page = params.get("page") || 1;
-  const genre_id = params.get("genre_id") || "";
-
-  let url = `${apiUrl}/3/movie/${category}?api_key=${apiKey}&language=fr-FR&page=${page}&with_genres=${genre_id}`;
-
-  if (genre_id) {
-    url = `${apiUrl}/3/discover/movie?api_key=${apiKey}&language=fr-FR&page=${page}&with_genres=${genre_id}`;
-  }
   // display movies trending today
-  fetch(url)
+  fetch(`${apiUrl}/3/trending/movie/day?api_key=${apiKey}&language=fr-FR`)
     .then((response) => {
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
@@ -223,15 +140,66 @@ document.addEventListener("DOMContentLoaded", function () {
     .then((data) => {
       const movies = data.results;
       displayMovies(movies);
-
-      generatePagination(
-        category,
-        data.page,
-        data.total_pages,
-        data.total_results,
-      );
     })
     .catch((error) => {
       console.error("Error fetching data:", error);
     });
+
+  // display tv trending today
+  fetch(`${apiUrl}/3/trending/tv/day?api_key=${apiKey}&language=fr-FR`)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      return response.json(); // Convert response to JSON
+    })
+    .then((data) => {
+      console.log("new");
+      const movies = data.results;
+      console.log({ movies });
+      displayMovies(movies, "tv");
+    })
+    .catch((error) => {
+      console.error("Error fetching data:", error);
+    });
+
+  // display movie genres
+  // Merging the arrays
+  const allGenres = [...movieGenres];
+
+  // Get 8 random genres
+  const randomGenres = getRandomItems(allGenres, 8);
+  console.log({ randomGenres });
+  // show genres
+  const genresContainer = document.querySelector("#list-genres");
+
+  if (genresContainer) {
+    randomGenres.forEach((genre) => {
+      const genreElement = document.createElement("div");
+      genreElement.classList.add(
+        "bg-gray-800",
+        "shadow-xl",
+        "group",
+        "hover:cursor-pointer",
+        "rounded-xl",
+        "relative",
+        "overflow-hidden",
+      );
+      genreElement.innerHTML = `
+        <figure>
+          <img
+            src="https://img.freepik.com/free-photo/view-3d-cinema-theatre-room_23-2150866033.jpg?t=st=1730222456~exp=1730226056~hmac=73ec6c66c035488d546fe56b922ece6a676feed0b2a12243ce07d1c95507aea5&w=996"
+            alt="${genre.name}"
+            class="w-full h-44 object-cover opacity-30 group-hover:opacity-40"
+          />
+        </figure>
+        <div class="absolute inset-0 flex justify-center items-center">
+          <a href="/movies.html?genre_id=${genre.id}"><h2 class="uppercase font-bold text-xl text-white">${genre.name}</h2></a>
+        </div>
+      `;
+      genresContainer.appendChild(genreElement);
+    });
+  } else {
+    console.error("Le conteneur des genres n'a pas été trouvé dans le DOM.");
+  }
 });

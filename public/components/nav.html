@@ -1,49 +1,180 @@
-<header class="fixed top-0 left-0 right-0 z-50">
-  <div class="w-[838px] h-[64px] bg-[#14213D] rounded-[34px] flex items-center mx-auto px-4 mt-[30px] mb-[30px]">
-    <!-- Left section -->
-    <div class="flex items-center gap-4 w-1/4">
-      <!-- Home Icon -->
-      <a href="/" class="flex items-center">
-        <svg width="45" height="46" viewBox="0 0 45 46" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M22.3333 41.3337C32.4588 41.3337 40.6667 33.1258 40.6667 23.0003C40.6667 12.8748 32.4588 4.66699 22.3333 4.66699C12.2078 4.66699 4 12.8748 4 23.0003C4 33.1258 12.2078 41.3337 22.3333 41.3337Z" stroke="#FCA311" stroke-width="4" stroke-linejoin="round"/>
-          <path d="M22.3333 17.5005C23.0626 17.5005 23.7621 17.2108 24.2778 16.695C24.7935 16.1793 25.0833 15.4798 25.0833 14.7505C25.0833 14.0211 24.7935 13.3217 24.2778 12.8059C23.7621 12.2902 23.0626 12.0005 22.3333 12.0005C21.6039 12.0005 20.9044 12.2902 20.3887 12.8059C19.873 13.3217 19.5833 14.0211 19.5833 14.7505C19.5833 15.4798 19.873 16.1793 20.3887 16.695C20.9044 17.2108 21.6039 17.5005 22.3333 17.5005Z" stroke="#FCA311" stroke-width="4" stroke-linejoin="round"/>
-          <path d="M22.3333 41.3335H40.6666" stroke="#FCA311" stroke-width="4" stroke-linecap="round"/>
-        </svg>
-      </a>
-    </div>
-
-    <!-- Center section -->
-    <div class="flex items-center justify-center flex-1">
-      <!-- Accueil button -->
-      <a href="/" class="bg-[#1B2B4B] text-white text-lg font-semibold px-5 py-2 rounded-full hover:text-[#FCA311] transition-colors mr-16">
-        Accueil
-      </a>
-
-      <!-- Navigation Links -->
-      <nav class="flex space-x-12">
-        <a href="/films" class="text-white font-medium hover:text-[#FCA311] transition-colors">FILMS</a>
-        <a href="/series" class="text-white font-medium hover:text-[#FCA311] transition-colors">SÉRIES</a>
-      </nav>
-    </div>
-
-    <!-- Right section -->
-    <div class="flex items-center justify-end gap-4 w-1/4">
-      <!-- Login Button -->
-      <button class="flex items-center bg-[#FCA311] px-5 py-2 rounded-full hover:bg-[#e59310] transition-colors">
-        <span class="text-lg font-semibold text-black">CONNEXION</span>
-        <svg class="ml-2" width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M8.66675 15.1109C10.5527 15.1109 12.3615 14.3617 13.6951 13.0281C15.0287 11.6945 15.7779 9.88577 15.7779 7.99978C15.7779 6.1138 15.0287 4.30506 13.6951 2.97147C12.3615 1.63788 10.5527 0.888672 8.66675 0.888672" stroke="black" stroke-width="1.8" stroke-linecap="round"/>
-          <path d="M1.55566 7.99967H10.4446M10.4446 7.99967L7.77789 5.33301M10.4446 7.99967L7.77789 10.6663" stroke="black" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </button>
-
-      <!-- User Icon -->
-      <div class="flex items-center">
-        <svg width="41" height="40" viewBox="0 0 41 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0.666748 20C0.666748 8.95431 9.62105 0 20.6667 0C31.7124 0 40.6667 8.95431 40.6667 20C40.6667 31.0457 31.7124 40 20.6667 40C9.62105 40 0.666748 31.0457 0.666748 20Z" fill="#FCA311"/>
-          <path d="M10.6667 20C10.6667 14.477 15.1437 10 20.6667 10C21.1297 10 21.2067 10.693 20.8097 10.933C19.9654 11.4428 19.2481 12.138 18.7123 12.966C18.1764 13.794 17.836 14.7332 17.7168 15.7122C17.5977 16.6913 17.7029 17.6846 18.0245 18.617C18.3461 19.5494 18.8756 20.3964 19.573 21.0938C20.2704 21.7912 21.1174 22.3207 22.0498 22.6423C22.9822 22.9639 23.9755 23.0691 24.9546 22.9499C25.9336 22.8308 26.8727 22.4904 27.7008 21.9545C28.5288 21.4186 29.224 20.7014 29.7337 19.857C29.9737 19.461 30.6667 19.537 30.6667 20C30.6667 21.138 30.4767 22.231 30.1267 23.25H30.6667C30.8657 23.25 31.0564 23.3291 31.1971 23.4697C31.3377 23.6104 31.4167 23.8011 31.4167 24C31.4167 24.199 31.3377 24.3897 31.1971 24.5304C31.0564 24.671 30.8657 24.75 30.6667 24.75H10.6667C10.4678 24.75 10.2771 24.671 10.1364 24.5304C9.99577 24.3897 9.91675 24.199 9.91675 24C9.91675 23.8011 9.99577 23.6104 10.1364 23.4697C10.2771 23.3291 10.4678 23.25 10.6667 23.25H11.2067C10.8483 22.204 10.6658 21.1058 10.6667 20Z" fill="black"/>
-        </svg>
+<nav class="bg-primary border-gray-200 dark:bg-gray-900">
+  <div class="max-w-screen-xl flex items-center justify-between mx-auto p-1">
+    <!-- Logo -->
+    <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
+      <lord-icon
+        src="https://cdn.lordicon.com/ulttckpo.json"
+        trigger="loop"
+        delay="2000"
+        colors="primary:#121331,secondary:#e4e4e4,tertiary:#f4ce14,quaternary:#495e57"
+        class="w-16 h-16"
+      >
+      </lord-icon>
+      <span
+        class="self-center text-3xl font-extrabold whitespace-nowrap text-secondary dark:text-white"
+        >GeorgesHub</span
+      >
+    </a>
+    <!-- Barre de recherche -->
+    <div class="flex-1 flex justify-center mx-4">
+      <div class="relative hidden md:block">
+        <div
+          class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
+        >
+          <svg
+            class="w-4 h-4 text-gray-700 dark:text-gray-400"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 20 20"
+          >
+            <path
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+            />
+          </svg>
+          <span class="sr-only">Icône de recherche</span>
+        </div>
+        <input
+          type="text"
+          id="search-navbar"
+          class="block w-80 p-2 pl-10 text-sm text-gray-900 border border-gray-500 rounded-md bg-gray-50 focus:ring-secondary focus:border-secondary dark:bg-gray-700 dark:border-gray-600 placeholder-gray-700 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="Rechercher..."
+        />
       </div>
     </div>
+    <!-- Liens de navigation -->
+    <div class="flex items-center">
+      <!-- Liens pour les écrans moyens et plus grands -->
+      <div class="hidden xl:block">
+        <ul class="flex space-x-8 items-center">
+          <li>
+            <a
+              id="nav-movies"
+              href="/movies.html"
+              class="text-white font-semibold hover:text-secondary hover:underline hover:underline-offset-8 decoration-secondary dark:text-white dark:hover:text-blue-500"
+              >Movies</a
+            >
+          </li>
+          <li>
+            <a
+              id="nav-tv"
+              href="/tv.html"
+              class="text-white font-semibold hover:text-secondary hover:underline hover:underline-offset-8 hover:decoration-secondary dark:text-white dark:hover:text-blue-500"
+              >Series</a
+            >
+          </li>
+          <!-- <li>
+            <a
+              href="#"
+              class="text-white font-semibold hover:text-secondary hover:underline hover:underline-offset-8 hover:decoration-secondary dark:text-white dark:hover:text-blue-500"
+              >Genres</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="text-white font-semibold hover:text-secondary hover:underline hover:underline-offset-8 hover:decoration-secondary dark:text-white dark:hover:text-blue-500"
+              >Our Reviews</a
+            >
+          </li> -->
+
+          <button
+            onclick="window.location.href='/login-signup.html'"
+            type="button"
+            class="border-2 border-secondary text-primary bg-secondary focus:outline-none focus:ring-4 focus:ring-secondary font-medium rounded-full py-1 px-4 text-center hover:bg-primary hover:text-white hover:border-white"
+          >
+            Sign in
+          </button>
+        </ul>
+      </div>
+      <!-- Bouton du menu pour les petits écrans -->
+      <button
+        data-collapse-toggle="navbar-search"
+        type="button"
+        class="inline-flex items-center p-2 ml-1 text-sm text-secondary rounded-lg xl:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+        aria-controls="navbar-search"
+        aria-expanded="false"
+      >
+        <span class="sr-only">Ouvrir le menu principal</span>
+        <svg
+          class="w-5 h-5"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 17 14"
+        >
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M1 1h15M1 7h15M1 13h15"
+          />
+        </svg>
+      </button>
+    </div>
   </div>
-</header>
+  <!-- Menu mobile -->
+  <div
+    class="items-center justify-between hidden w-full md:hidden"
+    id="navbar-search"
+  >
+    <div class="relative mt-3">
+      <!-- Barre de recherche mobile -->
+      <div
+        class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
+      >
+        <svg
+          class="w-4 h-4 text-gray-500 dark:text-gray-400"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 20 20"
+        >
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+          />
+        </svg>
+      </div>
+      <input
+        type="text"
+        id="search-navbar-mobile"
+        class="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        placeholder="Rechercher..."
+      />
+    </div>
+    <ul
+      class="flex flex-col p-4 mt-4 space-y-2 font-medium border border-gray-100 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700"
+    >
+      <li>
+        <a
+          href="#"
+          class="text-gray-900 dark:text-white hover:text-blue-700 dark:hover:text-blue-500"
+          >Accueil</a
+        >
+      </li>
+      <li>
+        <a
+          href="#"
+          class="text-gray-900 dark:text-white hover:text-blue-700 dark:hover:text-blue-500"
+          >À propos</a
+        >
+      </li>
+      <li>
+        <a
+          href="#"
+          class="text-gray-900 dark:text-white hover:text-blue-700 dark:hover:text-blue-500"
+          >Services</a
+        >
+      </li>
+    </ul>
+  </div>
+</nav>

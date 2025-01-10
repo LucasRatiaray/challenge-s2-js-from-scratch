@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Details - GeorgesHub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.lordicon.com/lordicon.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="bg-[#E5E5E5] min-h-screen flex flex-col">
+<!-- Navigation placeholder -->
+<div id="nav"></div>
+
+<!-- Movie Details Hero Section -->
+<div class="bg-[#14213D] text-white">
+    <div class="container mx-auto px-4 py-8">
+        <div class="flex gap-8">
+            <!-- Movie Poster -->
+            <div class="w-64 h-96 bg-gray-300 rounded-lg overflow-hidden">
+                <img id="movie-poster" src="" alt="Movie Poster" class="w-full h-full object-cover">
+            </div>
+
+            <!-- Movie Info -->
+            <div class="flex-1">
+                <h1 id="movie-title" class="text-4xl font-bold mb-2">Loading...</h1>
+                <div class="flex gap-2 text-sm mb-4">
+                    <span id="movie-genre">Genre</span>
+                    <span>•</span>
+                    <span id="movie-duration">Duration</span>
+                    <span>•</span>
+                    <span id="movie-year">Year</span>
+                </div>
+
+                <div class="bg-blue-600 inline-block px-3 py-1 rounded-full mb-6">
+                    <span id="movie-rating">87%</span> Score d'évaluation
+                </div>
+
+                <div class="mb-6">
+                    <h2 class="text-xl font-semibold mb-2">Synopsis</h2>
+                    <p id="movie-synopsis" class="text-gray-300">Loading synopsis...</p>
+                </div>
+
+                <div>
+                    <h3 class="font-semibold mb-1">Créatrice / Créateur</h3>
+                    <p id="movie-director">Loading director...</p>
+                </div>
+
+                <div class="flex gap-4 mt-4">
+                    <button class="favorite-btn bg-blue-500 hover:bg-blue-600 p-3 rounded-full transition-colors">
+                        <i class="fas fa-heart"></i>
+                    </button>
+                    <button class="bookmark-btn bg-blue-500 hover:bg-blue-600 p-3 rounded-full transition-colors">
+                        <i class="fas fa-bookmark"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Cast Section -->
+<div class="max-w-7xl mx-auto px-8 py-12">
+    <h2 class="text-2xl font-bold mb-6">Distribution des rôles</h2>
+    <div class="grid grid-cols-7 gap-4" id="movie-actors">
+        <!-- Cast Card Template -->
+        <div class="bg-white rounded-lg overflow-hidden shadow">
+            <div class="aspect-[3/4]">
+                <img src="/api/placeholder/200/300" alt="Actor" class="w-full h-full object-cover" />
+            </div>
+            <div class="p-4">
+                <h3 class="font-semibold">Actor Name</h3>
+                <p class="text-sm text-gray-600">Character</p>
+            </div>
+        </div>
+        <!-- Repeat cast cards as needed -->
+    </div>
+</div>
+
+<!-- Media Tabs Section -->
+<div class="container mx-auto px-4 py-12">
+    <div class="flex items-center gap-4 mb-6">
+        <h2 class="text-2xl font-bold">Médias</h2>
+        <div class="flex gap-2">
+            <button data-tab-type="videos" class="media-tab px-4 py-2 bg-[#FCA311] text-white rounded-full">
+                Vidéos (1)
+            </button>
+            <button data-tab-type="wallpapers" class="media-tab px-4 py-2 bg-gray-200 rounded-full">
+                Fonds d'écran (17)
+            </button>
+            <button data-tab-type="posters" class="media-tab px-4 py-2 bg-gray-200 rounded-full">
+                Affiches (10)
+            </button>
+        </div>
+    </div>
+
+    <div id="media-content"></div>
+</div>
+
+<!-- Recommendations Section -->
+<div class="bg-[#14213D] text-white py-12">
+    <div class="container mx-auto px-4">
+        <h2 class="text-2xl font-bold mb-6">Recommandations</h2>
+        <div id="recommendations-grid" class="grid grid-cols-5 gap-4">
+            <!-- Recommendations will be loaded here -->
+        </div>
+    </div>
+</div>
+
+<!-- Footer placeholder -->
+<div id="footer-container"></div>
+
+<!-- Scripts -->
+<script type="module" src="../dist/app.js"></script>
+    <script type="module" src="../dist/index.js"></script>
+    <!-- <script type="module" src="../dist/movies.js"></script> -->
+    <script type="module" src="../dist/detail.js"></script>
+    <script src="../node_modules/flowbite/dist/flowbite.js"></script>
+    <script src="https://cdn.lordicon.com/lordicon.js"></script>
+</body>
+</html>

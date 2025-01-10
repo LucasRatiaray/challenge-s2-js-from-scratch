@@ -1,6 +1,6 @@
 //index.ts
 
-import { displayMovies, generateStars } from "./movies-list";
+// import { displayMovies, generateStars } from "./movies";
 import loadComponent from "./app.js";
 
 loadComponent("./components/nav.html", "nav");

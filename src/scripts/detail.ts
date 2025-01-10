@@ -178,42 +178,14 @@ document.addEventListener("DOMContentLoaded", function () {
   console.log("DOM is fully loaded!");
   // Your code here
 
-  // active nav
-  const navItems = document.querySelector("#nav-movies");
-  if (navItems) {
-    navItems.classList.add("underline", "underline-offset-8");
-  }
-
-  // active genre
-  const movieGenresContainer = document.querySelector("#movie-genres");
-  console.log({ movieGenresContainer });
-  if (movieGenresContainer) {
-    movieGenresContainer.innerHTML = "";
-    movieGenres.forEach((genre) => {
-      const genreElement = document.createElement("button");
-      genreElement.className =
-        "px-3 py-1 bg-gray-100 rounded-full hover:bg-gray-200";
-      genreElement.innerHTML = `
-        <a href="/movies.html?genre_id=${genre.id}">${genre.name}</a>`;
-      movieGenresContainer.appendChild(genreElement);
-    });
-  }
-
   // get current state of the URL
   const params = new URLSearchParams(window.location.search);
 
   // Access parameters directly
-  const category = params.get("category") || "now_playing";
-  const page = params.get("page") || 1;
-  const genre_id = params.get("genre_id") || "";
+  const movie_id = params.get("movie_id") || "";
 
-  let url = `${apiUrl}/3/movie/${category}?api_key=${apiKey}&language=fr-FR&page=${page}&with_genres=${genre_id}`;
-
-  if (genre_id) {
-    url = `${apiUrl}/3/discover/movie?api_key=${apiKey}&language=fr-FR&page=${page}&with_genres=${genre_id}`;
-  }
   // display movies trending today
-  fetch(url)
+  fetch(`${apiUrl}/3/movie/${movie_id}?api_key=${apiKey}&language=fr-FR`)
     .then((response) => {
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
@@ -221,15 +193,87 @@ document.addEventListener("DOMContentLoaded", function () {
       return response.json(); // Convert response to JSON
     })
     .then((data) => {
-      const movies = data.results;
-      displayMovies(movies);
+      const movie = data;
 
-      generatePagination(
-        category,
-        data.page,
-        data.total_pages,
-        data.total_results,
+      // Display the movies
+      const title = document.querySelector("#movie-title");
+      if (title) {
+        title.textContent = movie.title;
+      }
+      const poster = document.querySelector("#movie-poster");
+      if (poster) {
+        (poster as HTMLImageElement).src =
+          `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+        (poster as HTMLImageElement).alt = movie.title;
+      }
+      const genre = document.querySelector("#movie-genre");
+      if (genre) {
+        const genres = movie.genres;
+        const genresText = genres.map((genre: any) => genre.name).join(", ");
+        genre.textContent = genresText;
+      }
+      const year = document.querySelector("#movie-year");
+      if (year) {
+        year.textContent = movie.release_date;
+      }
+
+      const rating = document.querySelector("#movie-rating");
+      if (rating) {
+        rating.textContent = movie.vote_average;
+      }
+
+      const overview = document.querySelector("#movie-synopsis");
+      if (overview) {
+        overview.textContent = movie.overview;
+      }
+    })
+    .catch((error) => {
+      console.error("Error fetching data:", error);
+    });
+
+  fetch(
+    `${apiUrl}/3/movie/${movie_id}/credits?api_key=${apiKey}&language=fr-FR`,
+  )
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      return response.json(); // Convert response to JSON
+    })
+    .then((data) => {
+      const credits = data;
+      const director = data.crew.find(
+        (person: any) => person.job === "Director",
       );
+      const directorName = document.querySelector("#movie-director");
+      if (directorName) {
+        directorName.textContent = director?.name || "Unknown";
+      }
+      const actors = credits.cast.slice(0, 10);
+      const actorsContainer = document.querySelector("#movie-actors");
+      console.log({ actorsContainer });
+      if (actorsContainer) {
+        actorsContainer.innerHTML = "";
+
+        actors.forEach((actor: any) => {
+          const elem = document.createElement("div");
+          console.log(actor);
+          elem.className = "";
+
+          elem.innerHTML = `
+            <div class="bg-white rounded-lg overflow-hidden shadow">
+              <div class="aspect-[3/4]">
+                  <img src="https://image.tmdb.org/t/p/w500/${actor.profile_path}" alt="${actor.name || "Unknown"}" class="w-full h-full object-cover" />
+              </div>
+              <div class="p-4">
+                  <h3 class="font-semibold">${actor.name || "Unknown"}</h3>
+                  <p class="text-sm text-gray-600">${actor.character || "Unknown"}</p>
+              </div>
+          </div>
+          `;
+          actorsContainer.append(elem);
+        });
+      }
     })
     .catch((error) => {
       console.error("Error fetching data:", error);
