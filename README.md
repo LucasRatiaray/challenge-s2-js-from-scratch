@@ -27,4 +27,4 @@ Ce projet est un défi pour pratiquer JavaScript à partir de zéro. Suivez les 
 
 ## Auteur
 
-Jessy Tang
+Lucas Ratiaray
