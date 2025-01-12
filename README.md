@@ -3,6 +3,10 @@
 
 Ce projet est un template frontend construit à partir de zéro en TypeScript, sans framework, et avec Tailwind CSS pour le styling. Il utilise `pnpm` pour la gestion des dépendances et propose un environnement de développement avec **surveillance automatique** (mode watch) pour les fichiers TypeScript et CSS.
 
+
+## Design du projet
+**https://www.figma.com/design/sHE2pUcjR0do7YDN9xCdLN/ESGI-3IWJ---NAM---LUCAS---GEORGES?node-id=0-1&p=f&t=KXstNybGdgDWn6Et-0**
+
 ## Installation du projet
 
 ### Prérequis

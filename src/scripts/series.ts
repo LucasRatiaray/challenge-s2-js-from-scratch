@@ -128,41 +128,40 @@ function displayGenreFilters(): void {
 }
 
 function displayShows(shows: TVShow[]): void {
-  const container = document.querySelector('.movie-list');
-  if (!container) return;
-
-  container.innerHTML = "";
+    const container = document.querySelector('.movie-list');
+    if (!container) return;
   
-  shows.forEach(show => {
-      const card = document.createElement('div');
-      card.classList.add('bg-white', 'rounded-lg', 'shadow-md', 'overflow-hidden');
-      
-      card.innerHTML = `
-          <div class="h-48 md:h-48 lg:h-56 w-full overflow-hidden">
-              <img class="w-full h-full object-cover" 
-                   src="https://image.tmdb.org/t/p/w500${show.poster_path}" 
-                   alt="${show.name}">
-          </div>
-          <div class="p-4">
-              <h3 class="text-lg font-semibold mb-2">
-                  <a href="/detail.html?show_id=${show.id}">${show.name}</a>
-              </h3>
-              <div class="flex justify-between items-center gap-0.5">
-                  <div class="flex gap-0 text-yellow-500 hover:text-yellow-500">
-                      ${generateStars(show.vote_average)}
-                  </div>
-                  <button class="text-gray-400 hover:text-red-500">
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-6 h-6" viewBox="0 0 24 24">
-                          <path d="M4.318 6.318a4.5 4.5 0 0 1 6.364 0L12 7.636l1.318-1.318a4.5 4.5 0 1 1 6.364 6.364L12 21.364l-7.682-7.682a4.5 4.5 0 0 1 0-6.364z"/>
-                      </svg>
-                  </button>
-              </div>
-          </div>
-      `;
-      
-      container.appendChild(card);
-  });
-}
+    container.innerHTML = "";
+    
+    shows.forEach(show => {
+        const card = document.createElement('div');
+        card.classList.add('bg-white', 'rounded-lg', 'shadow-md', 'overflow-hidden');
+        
+        card.innerHTML = `
+            <div class="h-48 md:h-48 lg:h-56 w-full overflow-hidden">
+                <img class="w-full h-full object-cover" 
+                     src="https://image.tmdb.org/t/p/w500${show.poster_path}" 
+                     alt="${show.name}">
+            </div>
+            <div class="p-4">
+                <h3 class="text-lg font-semibold mb-2">
+                    <a href="/detail.html?series_id=${show.id}">${show.name}</a>
+                </h3>
+                <div class="flex justify-between items-center gap-0.5">
+                    <div class="flex gap-0 text-yellow-500 hover:text-yellow-500">
+                        ${generateStars(show.vote_average)}
+                    </div>
+                    <button class="text-gray-400 hover:text-red-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-6 h-6" viewBox="0 0 24 24">
+                            <path d="M4.318 6.318a4.5 4.5 0 0 1 6.364 0L12 7.636l1.318-1.318a4.5 4.5 0 1 1 6.364 6.364L12 21.364l-7.682-7.682a4.5 4.5 0 0 1 0-6.364z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        `;
+        container.appendChild(card);
+    });
+  }
 
 async function initializePage(): Promise<void> {
   const params = new URLSearchParams(window.location.search);
