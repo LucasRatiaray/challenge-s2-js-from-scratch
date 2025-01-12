@@ -55,10 +55,6 @@ module.exports = {
   },
   plugins: [
     // Plugin principal pour le template HTML
-    new HtmlWebpackPlugin({
-      template: `./public/${page}.html`,
-      inject: 'body', // Injecte automatiquement les scripts
-    }),    
     // Plugin pour charger les variables d'environnement
     new Dotenv(),
     // Plugin pour fournir des variables globales
