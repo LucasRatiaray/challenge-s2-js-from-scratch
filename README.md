@@ -8,6 +8,14 @@ Pour installer les dépendances, exécutez la commande suivante :
 pnpm install
 ```
 
+## Compilation
+
+Pour compiler le projet, exécutez la commande suivante :
+
+```sh
+pnpm build
+```
+
 ## Démarrage
 
 Pour démarrer l'application, exécutez la commande suivante :
