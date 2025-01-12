@@ -1,4 +1,3 @@
-// Types
 interface Movie {
     id: number;
     title: string;
@@ -18,11 +17,11 @@ interface ApiResponse {
 
 type SortOption = 'az' | 'za' | 'popularity' | 'trending';
 
-// Constants
+
 const apiUrl = `https://api.themoviedb.org`;
 const apiKey = "e33d85365d7d139b64e59cc2738cf121";
 
-// Movie Genres
+// Genres
 const movieGenres = [
     { id: 28, name: "Action" },
     { id: 12, name: "Adventure" },
@@ -247,6 +246,11 @@ async function initializePage(): Promise<void> {
     } catch (error) {
         console.error('Error fetching movies:', error);
     }
+}
+
+function getFavoriteMovies(): number[] {
+    const favorites = localStorage.getItem('favoriteMovies');
+    return favorites ? JSON.parse(favorites) : [];
 }
 
 // Initialize when DOM is loaded

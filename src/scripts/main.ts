@@ -44,6 +44,85 @@ const tvGenres = [
   { id: 37, name: "Western" },
 ];
 
+interface MovieTrailer {
+  id: number;
+  title: string;
+  release_date: string;
+  videos: {
+      results: {
+          key: string;
+          site: string;
+          type: string;
+      }[];
+  };
+}
+
+async function displayTrailers() {
+  const trailersContainer = document.querySelector('#trailers-content');
+  if (!trailersContainer) return;
+
+  try {
+      // Fetch upcoming movies
+      const response = await fetch(
+          `${apiUrl}/3/movie/upcoming?api_key=${apiKey}&language=fr-FR&page=1`
+      );
+      const data = await response.json();
+      
+      // Get first 3 movies with trailers
+      const moviesWithTrailers = [];
+      for (const movie of data.results) {
+          const videoResponse = await fetch(
+              `${apiUrl}/3/movie/${movie.id}/videos?api_key=${apiKey}&language=fr-FR`
+          );
+          const videoData = await videoResponse.json();
+          
+          const trailer = videoData.results.find(v => v.type === "Trailer" && v.site === "YouTube");
+          if (trailer) {
+              moviesWithTrailers.push({
+                  ...movie,
+                  trailerKey: trailer.key
+              });
+              if (moviesWithTrailers.length === 3) break;
+          }
+      }
+
+      trailersContainer.innerHTML = '';
+
+        // Display trailers
+        moviesWithTrailers.forEach(movie => {
+            const trailerCard = document.createElement('div');
+            trailerCard.className = 'flex flex-col gap-4';
+            
+            const releaseDate = new Date(movie.release_date).toLocaleDateString('fr-FR', {
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric'
+            });
+
+            trailerCard.innerHTML = `
+                <div class="aspect-video">
+                    <iframe
+                        src="https://www.youtube.com/embed/${movie.trailerKey}"
+                        class="w-full h-full rounded-lg"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen
+                    ></iframe>
+                </div>
+                <div class="text-white">
+                    <h3 class="text-xl font-bold">${movie.title}</h3>
+                    <p class="text-gray-400">Sortie le ${releaseDate}</p>
+                </div>
+            `;
+
+            trailersContainer.appendChild(trailerCard);
+          });
+  
+      } catch (error) {
+          console.error('Error fetching trailers:', error);
+      }
+  }
+
 // Function to get random items from an array
 function getRandomItems(array: any[], numItems: number) {
   const shuffled = array.sort(() => 0.5 - Math.random());
@@ -160,6 +239,7 @@ function debounce(func: Function, wait: number) {
 document.addEventListener("DOMContentLoaded", function () {
   console.log("DOM is fully loaded!");
 
+  displayTrailers();
   // Fetch trending movies
   fetch(`${apiUrl}/3/trending/movie/day?api_key=${apiKey}&language=fr-FR`)
       .then((response) => {
@@ -192,7 +272,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Display genres
   const genresContainer = document.querySelector("#genres-content");
-  const randomGenres = getRandomItems(movieGenres, 8);
+  const randomGenres = getRandomItems(movieGenres, 16 );
 
   if (genresContainer) {
     const gridContainer = document.createElement('div');
@@ -219,7 +299,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     />
                 </figure>
                 <div class="absolute inset-0 flex justify-center items-center">
-                    <a href="/movies.html?genre_id=${genre.id}">
+                    <a href="/films.html?genre_id=${genre.id}">
                         <h2 class="uppercase font-bold text-xl text-white">${genre.name}</h2>
                     </a>
                 </div>

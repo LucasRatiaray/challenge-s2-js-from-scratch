@@ -7,18 +7,20 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-[#14213D] min-h-screen">
+
+    <div id="nav"></div>
 <!-- Hero Section with Theater Banner -->
 <div class="relative w-full h-[500px]">
     <!-- Banner Image -->
     <img
-            src="/images/cinema-banner.jpg"
+            src="/images/banner.png"
             alt="Cinema Theater"
             class="w-full h-full object-cover"
     >
 
     <!-- Welcome Text and Search -->
     <div class="absolute inset-0 flex flex-col items-center justify-center">
-        <div class="w-[600px] relative mt-16">
+        <div class="w-[600px] relative mt-32">
             <input
                     type="text"
                     placeholder="Rechercher..."
@@ -75,13 +77,9 @@
                 Bandes annonces
                 <span class="text-sm">~</span>
             </h2>
-            <div class="flex gap-2">
-                <button class="px-4 py-2 bg-[#FCA311] text-black rounded-full">Populaires</button>
-                <button class="px-4 py-2 bg-gray-700 text-white rounded-full">Au cinéma</button>
-            </div>
         </div>
         <!-- API content container -->
-        <div id="trailers-content" class="grid-trailers"></div>
+        <div id="trailers-content" class="grid grid-cols-1 md:grid-cols-3 gap-6">
     </section>
 
     <section class="mb-16">
@@ -100,6 +98,8 @@
     </section>
 </main>
 </body>
+<!-- Footer placeholder -->
+<div id="footer"></div>
 
 <script type="module" src="../dist/app.js"></script>
 <script type="module" src="../dist/index.js"></script>
